@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,6 +99,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -409,7 +411,7 @@
             left: 0;
             z-index: -1;
             opacity: 0.05;
-            background-image: 
+            background-image:
                 radial-gradient(circle at 20% 50%, var(--primary) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, var(--secondary) 0%, transparent 50%),
                 radial-gradient(circle at 40% 20%, var(--primary) 0%, transparent 50%);
@@ -417,15 +419,26 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="bg-animation"></div>
-    
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -460,7 +473,7 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <p class="about-text">
-                Passionate software developer with expertise in building scalable web applications and APIs. 
+                Passionate software developer with expertise in building scalable web applications and APIs.
                 I enjoy solving complex problems and creating efficient solutions that make a real impact.
             </p>
             <div class="skills-container">
@@ -531,11 +544,12 @@
             <h3 class="work-title">Junior Software Engineer</h3>
             <p class="company">Web Surfing Studios</p>
             <p class="work-date">May 2025 - Present • Remote</p>
-			<p style="margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
-                Full-stack software engineering focused on building scalable web applications and REST APIs using C# / .NET. 
-                Responsible for constructing and maintaining CI/CD pipelines with Azure DevOps and Git version control, 
-                ensuring smooth deployments across development, testing, and production environments. 
-                Develop dynamic user interfaces with HTML/CSS and JavaScript, manage databases with SQL, 
+            <p style="margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.8;">
+                Full-stack software engineering focused on building scalable web applications and REST APIs using C# /
+                .NET.
+                Responsible for constructing and maintaining CI/CD pipelines with Azure DevOps and Git version control,
+                ensuring smooth deployments across development, testing, and production environments.
+                Develop dynamic user interfaces with HTML/CSS and JavaScript, manage databases with SQL,
                 and leverage AWS services for cloud infrastructure and serverless computing.
             </p>
         </div>
@@ -552,7 +566,8 @@
                     <span class="project-type">REST API</span>
                     <h3 class="project-title">WSSEmailCatcher</h3>
                     <p class="project-description">
-                        A comprehensive email management API with endpoints for listing, querying, and deleting email database entries. Features a clean REST architecture with proper HTTP methods.
+                        A comprehensive email management API with endpoints for listing, querying, and deleting email
+                        database entries. Features a clean REST architecture with proper HTTP methods.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">.NET Core</span>
@@ -570,7 +585,8 @@
                     <span class="project-type">Programming Language</span>
                     <h3 class="project-title">Mabel</h3>
                     <p class="project-description">
-                        An object oriented programming language named after my Chow Chow, allowing for things like inheritance, defining functions, etc.
+                        An object oriented programming language named after my Chow Chow, allowing for things like
+                        inheritance, defining functions, etc.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">OOP</span>
@@ -578,7 +594,7 @@
                         <span class="tech-tag">Programming Language Design</span>
                         <span class="tech-tag">Grammars</span>
                     </div>
-					<div class="project-links">
+                    <div class="project-links">
                         <a href="https://github.com/afahey03/Mabel" class="project-link" target="_blank">
                             🔗 Visit Repository
                         </a>
@@ -593,7 +609,8 @@
                     <span class="project-type">Web Application</span>
                     <h3 class="project-title">PingMyApp</h3>
                     <p class="project-description">
-                        Real-time website monitoring dashboard tracking uptime, response times, and service health. Features instant alerts and comprehensive activity logging.
+                        Real-time website monitoring dashboard tracking uptime, response times, and service health.
+                        Features instant alerts and comprehensive activity logging.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">C# / .NET</span>
@@ -611,7 +628,8 @@
                     <span class="project-type">REST API</span>
                     <h3 class="project-title">WSSEmailSender</h3>
                     <p class="project-description">
-                        Centralized email communication API with templating support. Handles automated email sending with customizable templates for various email types.
+                        Centralized email communication API with templating support. Handles automated email sending
+                        with customizable templates for various email types.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">.NET Core</span>
@@ -629,7 +647,8 @@
                     <span class="project-type">Portal Application</span>
                     <h3 class="project-title">Web Surfing Studios Candidate Portal</h3>
                     <p class="project-description">
-                        Application management portal for Web Surfing Studios recruitment. Features application tracking, status checking, and a streamlined candidate journey visualization.
+                        Application management portal for Web Surfing Studios recruitment. Features application
+                        tracking, status checking, and a streamlined candidate journey visualization.
                     </p>
                     <div class="project-tech">
                         <span class="tech-tag">ASP.NET MVC</span>
@@ -668,6 +687,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer
+        style="text-align: center; padding: 2rem 0; color: var(--gray); border-top: 1px solid rgba(99, 102, 241, 0.1); margin-top: 3rem;">
+        <p>© 2025 Aidan Fahey. All rights reserved.</p>
+    </footer>
 
     <script>
         // Smooth scrolling for navigation links
@@ -709,6 +734,5 @@
         });
     </script>
 </body>
+
 </html>
-
-
