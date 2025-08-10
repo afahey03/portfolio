@@ -3,7 +3,7 @@
 Personal portfolio website showcasing my work as a software developer.
 
 ## 🚀 Live Site
-[View Portfolio](https://[afahey03].github.io/portfolio/)
+[View Portfolio](http://afahey03.com/)
 
 ## 💻 Technologies Used
 - HTML5
@@ -24,4 +24,5 @@ Personal portfolio website showcasing my work as a software developer.
 - LinkedIn: [linkedin.com/in/aidanfahey](https://linkedin.com/in/aidanfahey)
 
 ## 📄 License
+
 © 2025 Aidan Fahey. All rights reserved.
