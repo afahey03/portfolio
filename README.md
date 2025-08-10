@@ -9,7 +9,6 @@ Personal portfolio website showcasing my work as a software developer.
 - HTML5
 - CSS3 (with CSS Variables and Animations)
 - Vanilla JavaScript
-- Responsive Design
 
 ## 🎨 Features
 - Smooth scrolling navigation
@@ -26,3 +25,4 @@ Personal portfolio website showcasing my work as a software developer.
 ## 📄 License
 
 © 2025 Aidan Fahey. All rights reserved.
+
