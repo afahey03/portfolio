@@ -24,7 +24,8 @@ Personal portfolio website showcasing my work as a software developer.
 
 ## 📄 License
 
-© 2025 Aidan Fahey. All rights reserved.
-Freeza Artwork by blo0p.
+- © 2025 Aidan Fahey. All rights reserved.
+- Freeza Artwork by blo0p.
+
 
 
