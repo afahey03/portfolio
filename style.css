@@ -101,38 +101,30 @@ body {
 }
 
 /* Navigation */
-.nav-wrapper-outer {
+nav {
   position: fixed;
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  z-index: 1000;
-  width: auto;
-  max-width: calc(100% - 60px);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-nav {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 30px;
   padding: 20px 40px;
+  z-index: 1000;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow:
     0 10px 40px rgba(0, 245, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: center;
+  width: auto;
+  max-width: calc(100% - 60px);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   gap: 40px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -166,45 +158,6 @@ nav {
 .nav-links a:hover {
   color: var(--text-primary);
   text-shadow: 0 0 20px var(--glow);
-}
-
-.spotify-container {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 30px;
-  padding: 20px 30px;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: none;
-  /* Initially hidden until content is loaded */
-  align-items: center;
-  gap: 10px;
-  animation: fadeIn 0.5s ease-in-out;
-  box-shadow:
-    0 10px 40px rgba(0, 245, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.spotify-container .spotify-icon {
-  width: 20px;
-  height: 20px;
-  fill: #1DB954;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Hero Section */
@@ -470,7 +423,6 @@ section {
   color: var(--text-secondary);
   font-size: 1.1rem;
   margin-bottom: 3rem;
-
 }
 
 .work-description {
@@ -648,10 +600,6 @@ footer {
   }
 
   .nav-links {
-    display: none;
-  }
-
-  .spotify-container {
     display: none;
   }
 
