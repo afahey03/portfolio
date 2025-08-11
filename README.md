@@ -18,14 +18,11 @@ Personal portfolio website showcasing my work as a software developer.
 - Interactive skill tags
 - Contact section with multiple contact methods
 
-## 📧 Contact
-- Email: afahey2003@yahoo.com
-- LinkedIn: [linkedin.com/in/aidanfahey](https://linkedin.com/in/aidanfahey)
-
 ## 📄 License
 
 - © 2025 Aidan Fahey. All rights reserved.
 - Freeza Artwork by blo0p.
+
 
 
 
