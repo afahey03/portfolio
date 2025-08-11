@@ -418,6 +418,23 @@
             animation: float 20s infinite ease-in-out;
         }
 
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+        }
+
         @keyframes float {
 
             0%,
@@ -457,6 +474,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
+            <div
+                style="width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--primary);">
+                <img src="assets/images/Freeza.jpg" alt="Aidan Fahey"
+                    style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             <h1>Aidan Fahey</h1>
             <p class="subtitle">Software Developer</p>
             <p class="education">
