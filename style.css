@@ -116,12 +116,23 @@ nav {
   box-shadow:
     0 10px 40px rgba(0, 245, 255, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  width: auto;
+  max-width: calc(100% - 60px);
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  position: relative;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   gap: 40px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -132,6 +143,7 @@ nav {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .nav-links {
@@ -154,6 +166,36 @@ nav {
 .nav-links a:hover {
   color: var(--text-primary);
   text-shadow: 0 0 20px var(--glow);
+}
+
+.spotify-container {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.spotify-container .spotify-icon {
+  width: 20px;
+  height: 20px;
+  fill: #1DB954;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Hero Section */
