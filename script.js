@@ -11,26 +11,45 @@ window.addEventListener('load', () => {
   }, 1000);
 });
 
-// Custom cursor with no delay
+// Custom cursor
 const cursor = document.getElementById('cursor');
 const cursorTrail = document.getElementById('cursorTrail');
+let trailX = 0;
+let trailY = 0;
+const smoothing = 0.2; // Adjust for more or less smoothing
 
+// Update mouseX and mouseY on mousemove
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 
-  // Instant cursor positioning with no delay
+  // Move the outer ring instantly
   requestAnimationFrame(() => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
-
-  // Smooth trail with slight delay
-  setTimeout(() => {
-    cursorTrail.style.left = e.clientX + 'px';
-    cursorTrail.style.top = e.clientY + 'px';
-  }, 50);
 });
+
+// Animate the solid dot with smoothing
+function animateTrail() {
+  // Calculate the distance to the target position
+  const dx = mouseX - trailX;
+  const dy = mouseY - trailY;
+
+  // Move a fraction of the distance
+  trailX += dx * smoothing;
+  trailY += dy * smoothing;
+
+  // Apply the new position
+  cursorTrail.style.left = trailX + 'px';
+  cursorTrail.style.top = trailY + 'px';
+
+  // Continue the animation
+  requestAnimationFrame(animateTrail);
+}
+
+// Start the animation loop
+animateTrail();
 
 // Cursor interactions
 document.querySelectorAll('a, button, .project-card, .skill-tag').forEach(el => {
@@ -477,6 +496,7 @@ imageUrls.forEach(url => {
 const advancedObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
+      // Add different animation classes based on element position
       const rect = entry.boundingClientRect;
       const isFromLeft = rect.left < window.innerWidth / 2;
 
@@ -520,6 +540,7 @@ function throttle(func, wait) {
 
 // Apply throttling to scroll-heavy functions
 const throttledScroll = throttle(() => {
+  // Scroll-based animations here
 }, 16); // ~60fps
 
 window.addEventListener('scroll', throttledScroll);
@@ -547,6 +568,7 @@ canvas.addEventListener('error', () => {
 
 // Initialize all components when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+  // Add any initialization code here
   console.log('Enhanced portfolio loaded successfully');
 });
 
