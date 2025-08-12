@@ -8,7 +8,7 @@ let canvas, ctx;
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loadingScreen').classList.add('hidden');
-  }, 1500);
+  }, 1000);
 });
 
 // Custom cursor with no delay
