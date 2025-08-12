@@ -395,10 +395,10 @@ createFloatingParticles();
 // Parallax scrolling effects
 window.addEventListener('scroll', () => {
   const scrolled = window.pageYOffset;
-  const parallaxElements = document.querySelectorAll('.hero-avatar, .gradient-bg');
+  const parallaxElements = document.querySelectorAll('.hero-avatar');
 
   parallaxElements.forEach(element => {
-    const speed = element.classList.contains('gradient-bg') ? 0.5 : 0.3;
+    const speed = 0.3;
     element.style.transform = `translateY(${scrolled * speed}px)`;
   });
 });
@@ -455,15 +455,6 @@ glitchText.addEventListener('mouseenter', () => {
 
 glitchText.addEventListener('mouseleave', () => {
   glitchText.style.animationDuration = '725ms';
-});
-
-// Dynamic gradient morphing based on scroll
-window.addEventListener('scroll', () => {
-  const scrollPercent = window.pageYOffset / (document.body.offsetHeight - window.innerHeight);
-  const gradientBg = document.querySelector('.gradient-bg');
-
-  const hue = 180 + (scrollPercent * 180);
-  gradientBg.style.filter = `blur(40px) hue-rotate(${hue}deg)`;
 });
 
 // Preload images for better performance
