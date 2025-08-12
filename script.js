@@ -148,10 +148,14 @@ function typeWriter() {
 // Start typing animation
 setTimeout(typeWriter, 1000);
 
-// 3D Particle System
+// 3D Particle System with interactive repulsion
 function initParticleSystem() {
   canvas = document.getElementById('particleCanvas');
   ctx = canvas.getContext('2d');
+  const particleCount = 75; // Increased particle count for a fuller effect
+  const repulsionRadius = 150; // The distance at which particles start reacting to the mouse
+  const restoreForce = 0.002; // How quickly particles return to their origin
+  const damping = 0.95; // Slows down particle movement for a smoother effect
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -161,13 +165,17 @@ function initParticleSystem() {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Create particles
-  for (let i = 0; i < 50; i++) {
+  // Create particles with an origin point
+  for (let i = 0; i < particleCount; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
     particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
+      x: x,
+      y: y,
+      originX: x, // The "home" position for the particle
+      originY: y,
+      vx: 0,
+      vy: 0,
       size: Math.random() * 2 + 1,
       color: `hsl(${180 + Math.random() * 60}, 70%, 60%)`,
       alpha: Math.random() * 0.5 + 0.3
@@ -177,49 +185,40 @@ function initParticleSystem() {
   function drawParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Update and draw particles
-    particles.forEach((particle, index) => {
-      particle.x += particle.vx;
-      particle.y += particle.vy;
-
-      // Boundary collision
-      if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-      if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-
-      // Mouse interaction
-      const dx = mouseX - particle.x;
-      const dy = mouseY - particle.y;
+    particles.forEach((p) => {
+      // Mouse repulsion force
+      const dx = p.x - mouseX;
+      const dy = p.y - mouseY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      if (distance < 100) {
-        particle.vx += dx * 0.0001;
-        particle.vy += dy * 0.0001;
+      if (distance < repulsionRadius) {
+        const force = (repulsionRadius - distance) / repulsionRadius;
+        p.vx += (dx / distance) * force * 0.5; // Push away from mouse
+        p.vy += (dy / distance) * force * 0.5;
       }
+
+      // Restoring force to pull particles back to their origin
+      p.vx += (p.originX - p.x) * restoreForce;
+      p.vy += (p.originY - p.y) * restoreForce;
+
+      // Apply damping to slow down the particle
+      p.vx *= damping;
+      p.vy *= damping;
+
+      // Update position
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Boundary collision (optional, as restoring force keeps them in view)
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
       // Draw particle
       ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-      ctx.fillStyle = particle.color;
-      ctx.globalAlpha = particle.alpha;
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
       ctx.fill();
-
-      // Draw connections
-      particles.forEach((otherParticle, otherIndex) => {
-        if (index !== otherIndex) {
-          const dx = particle.x - otherParticle.x;
-          const dy = particle.y - otherParticle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 80) {
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(0, 245, 255, ${0.3 * (1 - distance / 80)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      });
     });
 
     requestAnimationFrame(drawParticles);
@@ -227,6 +226,7 @@ function initParticleSystem() {
 
   drawParticles();
 }
+
 
 // Initialize particle system
 initParticleSystem();
