@@ -540,7 +540,6 @@ function throttle(func, wait) {
 
 // Apply throttling to scroll-heavy functions
 const throttledScroll = throttle(() => {
-  // Scroll-based animations here
 }, 16); // ~60fps
 
 window.addEventListener('scroll', throttledScroll);
@@ -568,7 +567,6 @@ canvas.addEventListener('error', () => {
 
 // Initialize all components when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  // Add any initialization code here
   console.log('Enhanced portfolio loaded successfully');
 });
 
