@@ -317,6 +317,13 @@ body {
   cursor: none;
 }
 
+/* Hide default cursor everywhere */
+*,
+*::before,
+*::after {
+  cursor: none !important;
+}
+
 /* Animated Gradient Background */
 .gradient-bg {
   position: fixed;
@@ -429,6 +436,12 @@ nav {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.9rem;
+  outline: none;
+}
+
+.nav-links a:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .nav-links a:hover {
@@ -549,6 +562,12 @@ nav {
   border-radius: 10px;
   transition: all 0.3s ease;
   text-align: center;
+  outline: none;
+}
+
+.mobile-nav-links a:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .mobile-nav-links a:hover {
@@ -1215,8 +1234,10 @@ footer {
     display: none;
   }
 
-  body {
-    cursor: auto;
+  *,
+  *::before,
+  *::after {
+    cursor: auto !important;
   }
 
   nav {

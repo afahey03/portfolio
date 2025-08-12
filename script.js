@@ -545,19 +545,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Focus management for better accessibility
-document.querySelectorAll('a, button').forEach(element => {
-  element.addEventListener('focus', () => {
-    element.style.outline = '2px solid #00F5FF';
-    element.style.outlineOffset = '2px';
-  });
-
-  element.addEventListener('blur', () => {
-    element.style.outline = '';
-    element.style.outlineOffset = '';
-  });
-});
-
 // Error handling for canvas
 canvas.addEventListener('error', () => {
   console.warn('Canvas rendering error - falling back to CSS animations');
