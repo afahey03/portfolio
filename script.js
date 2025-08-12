@@ -149,7 +149,6 @@ function typeWriter() {
 setTimeout(typeWriter, 1000);
 
 // 3D Particle System with interactive repulsion and scroll parallax
-// 3D Particle System with interactive repulsion and scroll parallax
 function initParticleSystem() {
   canvas = document.getElementById('particleCanvas');
   ctx = canvas.getContext('2d');
@@ -248,56 +247,55 @@ function initParticleSystem() {
 // Initialize particle system
 initParticleSystem();
 
-function createShootingStar() {
+function createShootingStar(fromClick = false) {
   const shootingStar = document.createElement('div');
   shootingStar.className = 'shooting-star';
 
-  const startFromTop = Math.random() > 0.5;
-  const startX = startFromTop ? Math.random() * window.innerWidth : window.innerWidth + 100;
-  const startY = startFromTop ? -100 : Math.random() * window.innerHeight * 0.5;
+  const startX = -100;
+  const startY = Math.random() * (window.innerHeight * 0.4);
+  const endX = window.innerWidth + 200;
+  const endY = window.innerHeight - Math.random() * (window.innerHeight * 0.4);
 
-  const angle = startFromTop ?
-    (Math.random() * 30 + 30) :
-    (Math.random() * 30 + 150);
+  const deltaX = endX - startX;
+  const deltaY = endY - startY;
+  const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
 
-  const distance = Math.random() * 800 + 600;
-  const duration = Math.random() * 1 + 0.8;
+  const duration = fromClick ? 1.5 : 2.5;
 
-  const endX = startX - distance * Math.cos(angle * Math.PI / 180);
-  const endY = startY + distance * Math.sin(angle * Math.PI / 180);
+  shootingStar.style.left = startX + 'px';
+  shootingStar.style.top = startY + 'px';
+  shootingStar.style.transform = `rotate(${angle}deg)`;
+  shootingStar.style.zIndex = '9999';
 
-  shootingStar.style.left = `${startX}px`;
-  shootingStar.style.top = `${startY}px`;
-  shootingStar.style.setProperty('--star-tail-angle', `${angle - 180}deg`);
+  shootingStar.innerHTML = `
+    <div class="star-head"></div>
+    <div class="star-tail-1"></div>
+    <div class="star-tail-2"></div>
+    <div class="star-tail-3"></div>
+    <div class="star-tail-4"></div>
+  `;
 
-  const starHead = document.createElement('div');
-  starHead.className = 'star-head';
-  shootingStar.appendChild(starHead);
-
-  for (let i = 0; i < 5; i++) {
-    const tail = document.createElement('div');
-    tail.className = 'star-tail';
-    tail.style.opacity = (1 - i * 0.2);
-    tail.style.width = `${150 - i * 20}px`;
-    tail.style.animationDelay = `${i * 0.02}s`;
-    shootingStar.appendChild(tail);
+  if (fromClick) {
+    shootingStar.classList.add('bright-star');
   }
 
   document.body.appendChild(shootingStar);
+  console.log('Shooting star added to DOM');
 
   setTimeout(() => {
-    shootingStar.style.transition = `transform ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity ${duration}s ease-out`;
-    shootingStar.style.transform = `translate(${endX - startX}px, ${endY - startY}px)`;
-    shootingStar.style.opacity = '0';
-  }, 50);
+    shootingStar.style.transition = `transform ${duration}s linear`;
+    shootingStar.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(${angle}deg)`;
+  }, 10);
 
   setTimeout(() => {
-    shootingStar.remove();
-  }, (duration * 1000) + 100);
+    if (shootingStar.parentNode) {
+      shootingStar.remove();
+    }
+  }, duration * 1000 + 200);
 }
 
 function scheduleShootingStar() {
-  const delay = (Math.random() * 30 + 30) * 1000;
+  const delay = (Math.random() * 30 + 60) * 1000;
 
   setTimeout(() => {
     createShootingStar();
@@ -305,11 +303,32 @@ function scheduleShootingStar() {
   }, delay);
 }
 
+document.addEventListener('click', (e) => {
+  if (Math.random() < 0.03) {
+    createShootingStar(true);
+  }
+});
+
+const logo = document.querySelector('.logo');
+let logoHoverTimeout;
+
+if (logo) {
+  logo.addEventListener('mouseenter', () => {
+    clearTimeout(logoHoverTimeout);
+    logoHoverTimeout = setTimeout(() => {
+      if (Math.random() < 0.20) {
+        createShootingStar(true);
+      }
+    }, 100);
+  });
+}
 
 setTimeout(() => {
-  createShootingStar();
-  scheduleShootingStar();
-}, 5000);
+  setTimeout(() => {
+    createShootingStar();
+    scheduleShootingStar();
+  }, 3000);
+}, 2000);
 
 // Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
