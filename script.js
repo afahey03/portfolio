@@ -92,7 +92,8 @@ const typingTexts = [
   'Full-Stack Engineer',
   'Problem Solver',
   'Tech Enthusiast',
-  'Code Architect'
+  'Code Architect',
+  'Led Zeppelin Fan'
 ];
 
 let currentTextIndex = 0;
