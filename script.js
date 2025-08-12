@@ -149,6 +149,7 @@ function typeWriter() {
 setTimeout(typeWriter, 1000);
 
 // 3D Particle System with interactive repulsion and scroll parallax
+// 3D Particle System with interactive repulsion and scroll parallax
 function initParticleSystem() {
   canvas = document.getElementById('particleCanvas');
   ctx = canvas.getContext('2d');
@@ -246,6 +247,69 @@ function initParticleSystem() {
 
 // Initialize particle system
 initParticleSystem();
+
+function createShootingStar() {
+  const shootingStar = document.createElement('div');
+  shootingStar.className = 'shooting-star';
+
+  const startFromTop = Math.random() > 0.5;
+  const startX = startFromTop ? Math.random() * window.innerWidth : window.innerWidth + 100;
+  const startY = startFromTop ? -100 : Math.random() * window.innerHeight * 0.5;
+
+  const angle = startFromTop ?
+    (Math.random() * 30 + 30) :
+    (Math.random() * 30 + 150);
+
+  const distance = Math.random() * 800 + 600;
+  const duration = Math.random() * 1 + 0.8;
+
+  const endX = startX - distance * Math.cos(angle * Math.PI / 180);
+  const endY = startY + distance * Math.sin(angle * Math.PI / 180);
+
+  shootingStar.style.left = `${startX}px`;
+  shootingStar.style.top = `${startY}px`;
+  shootingStar.style.setProperty('--star-tail-angle', `${angle - 180}deg`);
+
+  const starHead = document.createElement('div');
+  starHead.className = 'star-head';
+  shootingStar.appendChild(starHead);
+
+  for (let i = 0; i < 5; i++) {
+    const tail = document.createElement('div');
+    tail.className = 'star-tail';
+    tail.style.opacity = (1 - i * 0.2);
+    tail.style.width = `${150 - i * 20}px`;
+    tail.style.animationDelay = `${i * 0.02}s`;
+    shootingStar.appendChild(tail);
+  }
+
+  document.body.appendChild(shootingStar);
+
+  setTimeout(() => {
+    shootingStar.style.transition = `transform ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity ${duration}s ease-out`;
+    shootingStar.style.transform = `translate(${endX - startX}px, ${endY - startY}px)`;
+    shootingStar.style.opacity = '0';
+  }, 50);
+
+  setTimeout(() => {
+    shootingStar.remove();
+  }, (duration * 1000) + 100);
+}
+
+function scheduleShootingStar() {
+  const delay = (Math.random() * 30 + 30) * 1000;
+
+  setTimeout(() => {
+    createShootingStar();
+    scheduleShootingStar();
+  }, delay);
+}
+
+
+setTimeout(() => {
+  createShootingStar();
+  scheduleShootingStar();
+}, 5000);
 
 // Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

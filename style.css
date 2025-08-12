@@ -67,6 +67,122 @@
   --glass-border: rgba(0, 0, 0, 0.1);
 }
 
+/* Shooting Star Effect */
+.shooting-star {
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+.star-head {
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ffffff 0%, #e0f7ff 40%, rgba(0, 245, 255, 0.8) 100%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px #ffffff,
+    0 0 20px #e0f7ff,
+    0 0 30px rgba(0, 245, 255, 0.6);
+  position: absolute;
+  animation: twinkle 0.3s infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.star-tail {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.8) 10%,
+      rgba(224, 247, 255, 0.6) 40%,
+      rgba(0, 245, 255, 0.3) 70%,
+      transparent 100%);
+  transform-origin: right center;
+  transform: rotate(var(--star-tail-angle, 135deg));
+  left: 2px;
+  top: 2px;
+  animation: shimmer 0.5s infinite;
+}
+
+.star-tail:nth-child(2) {
+  top: 1.5px;
+  opacity: 0.8;
+}
+
+.star-tail:nth-child(3) {
+  top: 1px;
+  opacity: 0.6;
+}
+
+.star-tail:nth-child(4) {
+  top: 0.5px;
+  opacity: 0.4;
+}
+
+.star-tail:nth-child(5) {
+  top: 0px;
+  opacity: 0.2;
+}
+
+.star-tail:nth-child(6) {
+  top: -0.5px;
+  opacity: 0.1;
+}
+
+@keyframes shimmer {
+
+  0%,
+  100% {
+    opacity: inherit;
+  }
+
+  50% {
+    opacity: calc(inherit * 0.6);
+  }
+}
+
+/* Light theme adjustments for shooting star */
+[data-theme="light"] .shooting-star {
+  filter: drop-shadow(0 0 8px rgba(0, 168, 204, 0.6));
+}
+
+[data-theme="light"] .star-head {
+  background: radial-gradient(circle, #00a8cc 0%, #4facfe 40%, rgba(79, 172, 254, 0.8) 100%);
+  box-shadow:
+    0 0 10px #00a8cc,
+    0 0 20px #4facfe,
+    0 0 30px rgba(79, 172, 254, 0.6);
+}
+
+[data-theme="light"] .star-tail {
+  background: linear-gradient(90deg,
+      rgba(0, 168, 204, 0) 0%,
+      rgba(0, 168, 204, 0.6) 10%,
+      rgba(79, 172, 254, 0.4) 40%,
+      rgba(0, 242, 254, 0.2) 70%,
+      transparent 100%);
+}
+
+/* Hide shooting stars on mobile for better performance */
+@media (max-width: 768px) {
+  .shooting-star {
+    display: none;
+  }
+}
+
 /* Custom Cursor */
 .cursor {
   width: 20px;
