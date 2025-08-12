@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
   }, 1500);
 });
 
-// Custom cursor
+// Custom cursor with no delay
 const cursor = document.getElementById('cursor');
 const cursorTrail = document.getElementById('cursorTrail');
 
@@ -19,24 +19,28 @@ document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 
-  cursor.style.left = e.clientX - 10 + 'px';
-  cursor.style.top = e.clientY - 10 + 'px';
+  // Instant cursor positioning with no delay
+  requestAnimationFrame(() => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
 
+  // Smooth trail with slight delay
   setTimeout(() => {
-    cursorTrail.style.left = e.clientX - 4 + 'px';
-    cursorTrail.style.top = e.clientY - 4 + 'px';
-  }, 100);
+    cursorTrail.style.left = e.clientX + 'px';
+    cursorTrail.style.top = e.clientY + 'px';
+  }, 50);
 });
 
 // Cursor interactions
 document.querySelectorAll('a, button, .project-card, .skill-tag').forEach(el => {
   el.addEventListener('mouseenter', () => {
-    cursor.style.transform = 'scale(1.5)';
+    cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
     cursor.style.borderColor = '#FF0080';
   });
 
   el.addEventListener('mouseleave', () => {
-    cursor.style.transform = 'scale(1)';
+    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
     cursor.style.borderColor = '#00F5FF';
   });
 });
