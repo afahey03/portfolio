@@ -11,12 +11,51 @@
 </head>
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2 class="loading-text">Loading Portfolio...</h2>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- 3D Particle Background -->
+    <canvas id="particleCanvas"></canvas>
+
     <div class="gradient-bg"></div>
 
     <nav>
         <div class="nav-container">
             <a href="#top" class="logo">AF</a>
             <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="themeToggle">
+                <div class="toggle-track">
+                    <div class="toggle-thumb"></div>
+                </div>
+            </button>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul class="mobile-nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -31,8 +70,11 @@
                 <div class="avatar-ring"></div>
                 <img src="assets/images/HolyCross.png" alt="Aidan Fahey" class="avatar-image">
             </div>
-            <h1>Aidan Fahey</h1>
-            <p class="subtitle">Software Developer</p>
+            <h1 class="glitch-text" data-text="Aidan Fahey">Aidan Fahey</h1>
+            <p class="subtitle">
+                <span class="typing-text" id="typingText">Software Developer</span>
+                <span class="cursor-blink">|</span>
+            </p>
             <p class="education">
                 B.A. Computer Science & Religious Studies<br>
                 College of the Holy Cross
@@ -278,15 +320,6 @@
                         </svg>
                         Email
                     </a>
-                    <!--
-                    <a href="tel:508-245-3155" class="contact-link">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-                        </svg>
-                        Phone
-                    </a>
-                    -->
                     <a href="https://linkedin.com/in/aidanfahey" class="contact-link" target="_blank">
                         <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -301,28 +334,17 @@
                         </svg>
                         GitHub
                     </a>
-                    <!--
-                    <a href="https://www.facebook.com/aidan.fahey.18" class="contact-link" target="_blank">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.494v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z" />
-                        </svg>
-                        Facebook
-                    </a>
-                    -->
-                    <!--
-                    <a href="https://twitter.com/tjxrewards" class="contact-link" target="_blank">
-                        <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724 9.864 9.864 0 0 1-3.127 1.195 4.916 4.916 0 0 0-8.384 4.482A13.944 13.944 0 0 1 1.671 3.149 4.916 4.916 0 0 0 3.195 9.723a4.902 4.902 0 0 1-2.229-.616v.062a4.918 4.918 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.224.084 4.92 4.92 0 0 0 4.588 3.417A9.867 9.867 0 0 1 0 19.54a13.94 13.94 0 0 0 7.548 2.212c9.056 0 14.01-7.496 14.01-13.986 0-.213-.005-.425-.014-.636A10.012 10.012 0 0 0 24 4.557z" />
-                        </svg>
-                        Twitter
-                    </a>
-                    -->
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+        </svg>
+    </button>
 
     <footer>
         <p>© 2025 Aidan Fahey. All rights reserved.</p>
@@ -330,6 +352,5 @@
 
     <script src="script.js"></script>
 </body>
-
 
 </html>
