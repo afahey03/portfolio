@@ -148,14 +148,16 @@ function typeWriter() {
 // Start typing animation
 setTimeout(typeWriter, 1000);
 
-// 3D Particle System with interactive repulsion
+// 3D Particle System with interactive repulsion and scroll parallax
 function initParticleSystem() {
   canvas = document.getElementById('particleCanvas');
   ctx = canvas.getContext('2d');
-  const particleCount = 75; // Increased particle count for a fuller effect
+  const particleCount = 120; // Increased particle count for better coverage when scrolling
   const repulsionRadius = 150; // The distance at which particles start reacting to the mouse
   const restoreForce = 0.002; // How quickly particles return to their origin
   const damping = 0.95; // Slows down particle movement for a smoother effect
+  let scrollY = 0;
+  const scrollSpeed = 0.5; // How fast particles move relative to scroll
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -165,15 +167,17 @@ function initParticleSystem() {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Create particles with an origin point
+  // Create particles distributed across a larger vertical area
+  const totalHeight = document.documentElement.scrollHeight;
   for (let i = 0; i < particleCount; i++) {
     const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height;
+    // Distribute particles across the entire scrollable height
+    const y = Math.random() * totalHeight * 0.7; // 0.7 to have some particles visible at start
     particles.push({
       x: x,
       y: y,
       originX: x, // The "home" position for the particle
-      originY: y,
+      originY: y, // Original Y position (before scroll adjustment)
       vx: 0,
       vy: 0,
       size: Math.random() * 2 + 1,
@@ -182,43 +186,56 @@ function initParticleSystem() {
     });
   }
 
+  // Update scroll position
+  window.addEventListener('scroll', () => {
+    scrollY = window.pageYOffset;
+  });
+
   function drawParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     particles.forEach((p) => {
-      // Mouse repulsion force
-      const dx = p.x - mouseX;
-      const dy = p.y - mouseY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+      // Calculate particle position with scroll offset
+      const scrollAdjustedY = p.y - (scrollY * scrollSpeed);
 
-      if (distance < repulsionRadius) {
-        const force = (repulsionRadius - distance) / repulsionRadius;
-        p.vx += (dx / distance) * force * 0.5; // Push away from mouse
-        p.vy += (dy / distance) * force * 0.5;
+      // Only process particles that are visible on screen (with some buffer)
+      if (scrollAdjustedY > -100 && scrollAdjustedY < canvas.height + 100) {
+        // Mouse repulsion force
+        const dx = p.x - mouseX;
+        const dy = scrollAdjustedY - mouseY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < repulsionRadius) {
+          const force = (repulsionRadius - distance) / repulsionRadius;
+          p.vx += (dx / distance) * force * 0.5; // Push away from mouse
+          p.vy += (dy / distance) * force * 0.5;
+        }
+
+        // Restoring force to pull particles back to their origin
+        p.vx += (p.originX - p.x) * restoreForce;
+        p.vy += (p.originY - scrollAdjustedY) * restoreForce;
+
+        // Apply damping to slow down the particle
+        p.vx *= damping;
+        p.vy *= damping;
+
+        // Update position
+        p.x += p.vx;
+        const newY = scrollAdjustedY + p.vy;
+
+        // Update the stored Y position accounting for scroll
+        p.y = newY + (scrollY * scrollSpeed);
+
+        // Boundary collision for X axis
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+
+        // Draw particle
+        ctx.beginPath();
+        ctx.arc(p.x, newY, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fill();
       }
-
-      // Restoring force to pull particles back to their origin
-      p.vx += (p.originX - p.x) * restoreForce;
-      p.vy += (p.originY - p.y) * restoreForce;
-
-      // Apply damping to slow down the particle
-      p.vx *= damping;
-      p.vy *= damping;
-
-      // Update position
-      p.x += p.vx;
-      p.y += p.vy;
-
-      // Boundary collision (optional, as restoring force keeps them in view)
-      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-      // Draw particle
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = p.alpha;
-      ctx.fill();
     });
 
     requestAnimationFrame(drawParticles);
@@ -226,7 +243,6 @@ function initParticleSystem() {
 
   drawParticles();
 }
-
 
 // Initialize particle system
 initParticleSystem();
