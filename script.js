@@ -145,19 +145,17 @@ function typeWriter() {
   setTimeout(typeWriter, typeSpeed);
 }
 
-// Start typing animation
 setTimeout(typeWriter, 1000);
 
-// 3D Particle System with interactive repulsion and scroll parallax
 function initParticleSystem() {
   canvas = document.getElementById('particleCanvas');
   ctx = canvas.getContext('2d');
-  const particleCount = 120; // Increased particle count for better coverage when scrolling
-  const repulsionRadius = 150; // The distance at which particles start reacting to the mouse
-  const restoreForce = 0.002; // How quickly particles return to their origin
-  const damping = 0.95; // Slows down particle movement for a smoother effect
+  const particleCount = 120;
+  const repulsionRadius = 150;
+  const restoreForce = 0.002;
+  const damping = 0.95;
   let scrollY = 0;
-  const scrollSpeed = 0.5; // How fast particles move relative to scroll
+  const scrollSpeed = 0.5;
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -167,17 +165,15 @@ function initParticleSystem() {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Create particles distributed across a larger vertical area
   const totalHeight = document.documentElement.scrollHeight;
   for (let i = 0; i < particleCount; i++) {
     const x = Math.random() * canvas.width;
-    // Distribute particles across the entire scrollable height
-    const y = Math.random() * totalHeight * 0.7; // 0.7 to have some particles visible at start
+    const y = Math.random() * totalHeight * 0.7;
     particles.push({
       x: x,
       y: y,
-      originX: x, // The "home" position for the particle
-      originY: y, // Original Y position (before scroll adjustment)
+      originX: x,
+      originY: y,
       vx: 0,
       vy: 0,
       size: Math.random() * 2 + 1,
@@ -186,7 +182,6 @@ function initParticleSystem() {
     });
   }
 
-  // Update scroll position
   window.addEventListener('scroll', () => {
     scrollY = window.pageYOffset;
   });
@@ -195,41 +190,32 @@ function initParticleSystem() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     particles.forEach((p) => {
-      // Calculate particle position with scroll offset
       const scrollAdjustedY = p.y - (scrollY * scrollSpeed);
 
-      // Only process particles that are visible on screen (with some buffer)
       if (scrollAdjustedY > -100 && scrollAdjustedY < canvas.height + 100) {
-        // Mouse repulsion force
         const dx = p.x - mouseX;
         const dy = scrollAdjustedY - mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < repulsionRadius) {
           const force = (repulsionRadius - distance) / repulsionRadius;
-          p.vx += (dx / distance) * force * 0.5; // Push away from mouse
+          p.vx += (dx / distance) * force * 0.5;
           p.vy += (dy / distance) * force * 0.5;
         }
 
-        // Restoring force to pull particles back to their origin
         p.vx += (p.originX - p.x) * restoreForce;
         p.vy += (p.originY - scrollAdjustedY) * restoreForce;
 
-        // Apply damping to slow down the particle
         p.vx *= damping;
         p.vy *= damping;
 
-        // Update position
         p.x += p.vx;
         const newY = scrollAdjustedY + p.vy;
 
-        // Update the stored Y position accounting for scroll
         p.y = newY + (scrollY * scrollSpeed);
 
-        // Boundary collision for X axis
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
 
-        // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, newY, p.size, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
@@ -244,7 +230,6 @@ function initParticleSystem() {
   drawParticles();
 }
 
-// Initialize particle system
 initParticleSystem();
 
 function createShootingStar(fromClick = false) {
@@ -258,40 +243,179 @@ function createShootingStar(fromClick = false) {
 
   const deltaX = endX - startX;
   const deltaY = endY - startY;
-  const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+
+  // Calculate control point for quadratic bezier curve
+  const controlX = startX + deltaX / 2;
+  const controlY = Math.min(startY, endY) - (Math.random() * 100 + 50);
 
   const duration = fromClick ? 1.5 : 2.5;
 
-  shootingStar.style.left = startX + 'px';
-  shootingStar.style.top = startY + 'px';
-  shootingStar.style.transform = `rotate(${angle}deg)`;
+  shootingStar.style.position = 'fixed';
   shootingStar.style.zIndex = '9999';
+  shootingStar.style.pointerEvents = 'none';
+  shootingStar.style.width = '250px';
+  shootingStar.style.height = '30px';
 
-  shootingStar.innerHTML = `
-    <div class="star-head"></div>
-    <div class="star-tail-1"></div>
-    <div class="star-tail-2"></div>
-    <div class="star-tail-3"></div>
-    <div class="star-tail-4"></div>
-  `;
+  // Create the star headt
+  const starHead = document.createElement('div');
+  starHead.className = 'star-head';
+  starHead.style.position = 'absolute';
+  starHead.style.right = '0'; // Position at the very front of the container
+  starHead.style.top = '50%'; // Center vertically
+  starHead.style.transform = 'translateY(-50%)'; // Perfect vertical centering
+  starHead.style.width = fromClick ? '12px' : '10px';
+  starHead.style.height = fromClick ? '12px' : '10px';
+  starHead.style.background = '#ffffff';
+  starHead.style.borderRadius = '50%';
+  starHead.style.boxShadow = fromClick ? `
+    0 0 20px #ffffff,
+    0 0 40px #00F5FF,
+    0 0 60px #00F5FF,
+    0 0 80px #B24BF3,
+    0 0 100px #00F5FF` : `
+    0 0 15px #ffffff,
+    0 0 30px #00F5FF,
+    0 0 45px #00F5FF,
+    0 0 60px #00F5FF`;
+  starHead.style.zIndex = '10';
+  shootingStar.appendChild(starHead);
 
-  if (fromClick) {
-    shootingStar.classList.add('bright-star');
+  // Create the tail container
+  const tailContainer = document.createElement('div');
+  tailContainer.style.position = 'absolute';
+  tailContainer.style.right = '6px';
+  tailContainer.style.top = '50%';
+  tailContainer.style.transform = 'translateY(-50%)';
+  tailContainer.style.width = '240px';
+  tailContainer.style.height = '30px';
+  tailContainer.style.transformOrigin = 'right center';
+  tailContainer.style.zIndex = '1';
+
+  // Create the main tail gradient
+  const mainTail = document.createElement('div');
+  mainTail.style.position = 'absolute';
+  mainTail.style.width = '100%';
+  mainTail.style.height = '2px';
+  mainTail.style.top = '50%';
+  mainTail.style.left = '0';
+  mainTail.style.transform = 'translateY(-50%)';
+  mainTail.style.background = fromClick ?
+    `linear-gradient(to left, 
+      rgba(255, 255, 255, 1) 0%,
+      rgba(178, 75, 243, 0.9) 10%,
+      rgba(0, 245, 255, 0.8) 20%,
+      rgba(0, 245, 255, 0.6) 40%,
+      rgba(0, 245, 255, 0.3) 70%,
+      transparent 100%)` :
+    `linear-gradient(to left, 
+      rgba(255, 255, 255, 1) 0%,
+      rgba(0, 245, 255, 0.9) 10%,
+      rgba(0, 245, 255, 0.7) 30%,
+      rgba(0, 245, 255, 0.4) 60%,
+      transparent 100%)`;
+  mainTail.style.borderRadius = '1px';
+  tailContainer.appendChild(mainTail);
+
+  // Add multiple glow layers for depth
+  for (let i = 1; i <= 3; i++) {
+    const glowLayer = document.createElement('div');
+    glowLayer.style.position = 'absolute';
+    glowLayer.style.width = '100%';
+    glowLayer.style.height = `${8 + i * 4}px`;
+    glowLayer.style.top = '50%';
+    glowLayer.style.left = '0';
+    glowLayer.style.transform = 'translateY(-50%)';
+    glowLayer.style.background = fromClick ?
+      `linear-gradient(to left, 
+        rgba(178, 75, 243, ${0.5 - i * 0.1}) 0%,
+        rgba(0, 245, 255, ${0.4 - i * 0.1}) 20%,
+        transparent 80%)` :
+      `linear-gradient(to left, 
+        rgba(0, 245, 255, ${0.4 - i * 0.1}) 0%,
+        rgba(0, 245, 255, ${0.2 - i * 0.05}) 40%,
+        transparent 80%)`;
+    glowLayer.style.filter = `blur(${i * 2}px)`;
+    glowLayer.style.borderRadius = '4px';
+    tailContainer.appendChild(glowLayer);
   }
 
+  // Add a bright connecting glow between star and tail
+  const connector = document.createElement('div');
+  connector.style.position = 'absolute';
+  connector.style.width = '30px';
+  connector.style.height = '20px';
+  connector.style.right = '-5px';
+  connector.style.top = '50%';
+  connector.style.transform = 'translateY(-50%)';
+  connector.style.background = `radial-gradient(ellipse at right center, 
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(0, 245, 255, 0.5) 30%,
+    transparent 70%)`;
+  connector.style.filter = 'blur(3px)';
+  tailContainer.appendChild(connector);
+
+  shootingStar.appendChild(tailContainer);
   document.body.appendChild(shootingStar);
-  console.log('Shooting star added to DOM');
 
-  setTimeout(() => {
-    shootingStar.style.transition = `transform ${duration}s linear`;
-    shootingStar.style.transform = `translate(${deltaX}px, ${deltaY}px) rotate(${angle}deg)`;
-  }, 10);
+  // Function to calculate position on bezier curve
+  function getPointOnCurve(t) {
+    const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * controlX + t * t * endX;
+    const y = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * controlY + t * t * endY;
+    return { x, y };
+  }
 
-  setTimeout(() => {
-    if (shootingStar.parentNode) {
-      shootingStar.remove();
+  // Function to calculate tangent angle at point on curve
+  function getTangentAngle(t) {
+    const delta = 0.01;
+    const p1 = getPointOnCurve(Math.max(0, t - delta));
+    const p2 = getPointOnCurve(Math.min(1, t + delta));
+    return Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
+  }
+
+  // Animate the shooting star along the curve
+  let animationProgress = 0;
+  const animationStep = 1 / (duration * 60);
+
+  const animationInterval = setInterval(() => {
+    animationProgress += animationStep;
+
+    if (animationProgress >= 1) {
+      clearInterval(animationInterval);
+      setTimeout(() => {
+        if (shootingStar.parentNode) {
+          shootingStar.remove();
+        }
+      }, 200);
+      return;
     }
-  }, duration * 1000 + 200);
+
+    // Get current position on curve
+    const currentPos = getPointOnCurve(animationProgress);
+    const angle = getTangentAngle(animationProgress);
+
+    // Update shooting star position and rotation
+    shootingStar.style.left = currentPos.x + 'px';
+    shootingStar.style.top = currentPos.y + 'px';
+    shootingStar.style.transform = `rotate(${angle}deg)`;
+
+    // Dynamic tail stretching based on speed
+    const speed = Math.abs(Math.sin(animationProgress * Math.PI * 2)) * 0.3 + 0.7;
+    tailContainer.style.transform = `translateY(-50%) scaleX(${0.8 + speed * 0.4})`;
+
+    // Fade in at start and fade out at end
+    if (animationProgress < 0.1) {
+      shootingStar.style.opacity = animationProgress * 10;
+    } else if (animationProgress > 0.85) {
+      shootingStar.style.opacity = (1 - animationProgress) * 6.67;
+    } else {
+      shootingStar.style.opacity = 1;
+    }
+
+    // Pulse effect for star head
+    const pulseFactor = 1 + Math.sin(animationProgress * Math.PI * 8) * 0.2;
+    starHead.style.transform = `translateY(-50%) scale(${pulseFactor})`;
+
+  }, 1000 / 60);
 }
 
 function scheduleShootingStar() {

@@ -67,152 +67,81 @@
   --glass-border: rgba(0, 0, 0, 0.1);
 }
 
-/* Simple, Highly Visible Shooting Star Effect */
+/* Shooting star effects */
 .shooting-star {
   position: fixed;
   z-index: 9999;
   pointer-events: none;
-  top: 0;
-  left: 0;
-  transform-origin: center;
+  transform-origin: center center;
+  will-change: transform, opacity;
 }
 
 .star-head {
   position: absolute;
-  width: 6px;
-  height: 6px;
   background: #ffffff;
   border-radius: 50%;
-  box-shadow:
-    0 0 10px #ffffff,
-    0 0 20px #00F5FF,
-    0 0 30px #00F5FF,
-    0 0 40px #00F5FF;
-  animation: starTwinkle 0.5s ease-in-out infinite alternate;
+  animation: starPulse 0.3s ease-in-out infinite alternate;
 }
 
-.star-tail-1 {
-  position: absolute;
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(90deg, #ffffff 0%, rgba(0, 245, 255, 0.8) 50%, transparent 100%);
-  left: -80px;
-  top: 2px;
-  border-radius: 1px;
-  box-shadow: 0 0 5px rgba(0, 245, 255, 0.5);
-}
-
-.star-tail-2 {
-  position: absolute;
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8) 0%, rgba(0, 245, 255, 0.6) 50%, transparent 100%);
-  left: -60px;
-  top: 2.5px;
-  border-radius: 1px;
-}
-
-.star-tail-3 {
-  position: absolute;
-  width: 40px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(0, 245, 255, 0.4) 50%, transparent 100%);
-  left: -40px;
-  top: 3px;
-  border-radius: 1px;
-}
-
-.star-tail-4 {
-  position: absolute;
-  width: 20px;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4) 0%, rgba(0, 245, 255, 0.2) 50%, transparent 100%);
-  left: -20px;
-  top: 3px;
-  border-radius: 1px;
-}
-
-/* Brighter version for easter eggs */
-.bright-star .star-head {
-  width: 8px;
-  height: 8px;
-  background: #ffffff;
-  box-shadow:
-    0 0 15px #ffffff,
-    0 0 30px #00F5FF,
-    0 0 45px #00F5FF,
-    0 0 60px #B24BF3;
-}
-
-.bright-star .star-tail-1 {
-  width: 120px;
-  height: 3px;
-  background: linear-gradient(90deg, #ffffff 0%, rgba(0, 245, 255, 1) 30%, rgba(178, 75, 243, 0.8) 70%, transparent 100%);
-  left: -120px;
-  top: 2px;
-  box-shadow: 0 0 8px rgba(0, 245, 255, 0.8);
-}
-
-.bright-star .star-tail-2 {
-  width: 90px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(0, 245, 255, 0.8) 50%, transparent 100%);
-  left: -90px;
-  top: 3px;
-}
-
-@keyframes starTwinkle {
+@keyframes starPulse {
   0% {
-    transform: scale(0.8);
-    opacity: 0.8;
+    box-shadow:
+      0 0 10px #ffffff,
+      0 0 20px #00F5FF,
+      0 0 30px #00F5FF,
+      0 0 40px rgba(0, 245, 255, 0.8);
   }
 
   100% {
-    transform: scale(1.2);
-    opacity: 1;
+    box-shadow:
+      0 0 15px #ffffff,
+      0 0 25px #00F5FF,
+      0 0 35px #00F5FF,
+      0 0 50px rgba(0, 245, 255, 1);
   }
 }
 
-/* Light theme adjustments */
 [data-theme="light"] .shooting-star .star-head {
-  background: #00a8cc;
-  box-shadow:
-    0 0 10px #ffffff,
-    0 0 20px #00a8cc,
-    0 0 30px #00a8cc,
-    0 0 40px #00a8cc;
+  background: linear-gradient(135deg, #ffffff, #00a8cc);
+  animation: starPulseLightMode 0.3s ease-in-out infinite alternate;
 }
 
-[data-theme="light"] .shooting-star .star-tail-1 {
-  background: linear-gradient(90deg, #00a8cc 0%, rgba(79, 172, 254, 0.8) 50%, transparent 100%);
-  box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+@keyframes starPulseLightMode {
+  0% {
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.8),
+      0 0 20px rgba(0, 168, 204, 0.6),
+      0 0 30px rgba(0, 168, 204, 0.4);
+  }
+
+  100% {
+    box-shadow:
+      0 0 15px #ffffff,
+      0 0 25px rgba(0, 168, 204, 0.8),
+      0 0 35px rgba(0, 168, 204, 0.6);
+  }
 }
 
-[data-theme="light"] .shooting-star .star-tail-2 {
-  background: linear-gradient(90deg, rgba(0, 168, 204, 0.8) 0%, rgba(79, 172, 254, 0.6) 50%, transparent 100%);
-}
-
-/* Make sure stars are visible on mobile but reduce frequency */
 @media (max-width: 768px) {
   .shooting-star {
-    display: block;
+    transform-origin: center center;
   }
 
   .star-head {
-    width: 4px;
-    height: 4px;
+    animation-duration: 0.4s;
   }
+}
 
-  .star-tail-1 {
-    width: 40px;
-    height: 1px;
-    left: -40px;
-  }
+@media (prefers-reduced-motion: reduce) {
 
-  .star-tail-2 {
-    width: 25px;
-    left: -25px;
+  .shooting-star,
+  .star-head {
+    animation: none !important;
   }
+}
+
+.shooting-star {
+  isolation: isolate;
 }
 
 /* Custom Cursor */
