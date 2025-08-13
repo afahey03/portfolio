@@ -57,8 +57,8 @@
 
 /* Light theme variables */
 [data-theme="light"] {
-  --bg-primary: #9bbac9;
-  --bg-secondary: #1268be;
+  --bg-primary: #d1ace2;
+  --bg-secondary: #bc16fd;
   --bg-card: rgba(255, 255, 255, 0.8);
   --text-primary: #1a1a1a;
   --text-secondary: #4a5568;
@@ -445,12 +445,12 @@ body {
 
 /* Light Mode Overrides */
 [data-theme="light"] .gradient-bg::before {
-  background: radial-gradient(circle, rgba(0, 168, 204, 0.4) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(153, 0, 255, 0.4) 0%, transparent 50%);
   opacity: 0.5;
 }
 
 [data-theme="light"] .gradient-bg::after {
-  background: radial-gradient(circle, rgba(178, 75, 243, 0.2) 0%, transparent 50%);
+  background: radial-gradient(circle, rgba(157, 0, 255, 0.2) 0%, transparent 50%);
   opacity: 0.5;
 }
 
