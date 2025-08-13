@@ -57,8 +57,8 @@
 
 /* Light theme variables */
 [data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
+  --bg-primary: #9bbac9;
+  --bg-secondary: #1268be;
   --bg-card: rgba(255, 255, 255, 0.8);
   --text-primary: #1a1a1a;
   --text-secondary: #4a5568;
