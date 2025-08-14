@@ -414,7 +414,7 @@ function scheduleShootingStar() {
 }
 
 document.addEventListener('click', (e) => {
-  if (Math.random() < 0.08) {
+  if (Math.random() < 0.05) {
     createShootingStar(true);
   }
 });
