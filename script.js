@@ -244,7 +244,6 @@ function createShootingStar(fromClick = false) {
   const deltaX = endX - startX;
   const deltaY = endY - startY;
 
-  // Calculate control point for quadratic bezier curve
   const controlX = startX + deltaX / 2;
   const controlY = Math.min(startY, endY) - (Math.random() * 100 + 50);
 
@@ -256,13 +255,12 @@ function createShootingStar(fromClick = false) {
   shootingStar.style.width = '250px';
   shootingStar.style.height = '30px';
 
-  // Create the star headt
   const starHead = document.createElement('div');
   starHead.className = 'star-head';
   starHead.style.position = 'absolute';
-  starHead.style.right = '0'; // Position at the very front of the container
-  starHead.style.top = '50%'; // Center vertically
-  starHead.style.transform = 'translateY(-50%)'; // Perfect vertical centering
+  starHead.style.right = '0';
+  starHead.style.top = '50%';
+  starHead.style.transform = 'translateY(-50%)';
   starHead.style.width = fromClick ? '12px' : '10px';
   starHead.style.height = fromClick ? '12px' : '10px';
   starHead.style.background = '#ffffff';
@@ -280,7 +278,6 @@ function createShootingStar(fromClick = false) {
   starHead.style.zIndex = '10';
   shootingStar.appendChild(starHead);
 
-  // Create the tail container
   const tailContainer = document.createElement('div');
   tailContainer.style.position = 'absolute';
   tailContainer.style.right = '6px';
@@ -291,7 +288,6 @@ function createShootingStar(fromClick = false) {
   tailContainer.style.transformOrigin = 'right center';
   tailContainer.style.zIndex = '1';
 
-  // Create the main tail gradient
   const mainTail = document.createElement('div');
   mainTail.style.position = 'absolute';
   mainTail.style.width = '100%';
@@ -316,7 +312,6 @@ function createShootingStar(fromClick = false) {
   mainTail.style.borderRadius = '1px';
   tailContainer.appendChild(mainTail);
 
-  // Add multiple glow layers for depth
   for (let i = 1; i <= 3; i++) {
     const glowLayer = document.createElement('div');
     glowLayer.style.position = 'absolute';
@@ -339,7 +334,6 @@ function createShootingStar(fromClick = false) {
     tailContainer.appendChild(glowLayer);
   }
 
-  // Add a bright connecting glow between star and tail
   const connector = document.createElement('div');
   connector.style.position = 'absolute';
   connector.style.width = '30px';
@@ -357,14 +351,12 @@ function createShootingStar(fromClick = false) {
   shootingStar.appendChild(tailContainer);
   document.body.appendChild(shootingStar);
 
-  // Function to calculate position on bezier curve
   function getPointOnCurve(t) {
     const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * controlX + t * t * endX;
     const y = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * controlY + t * t * endY;
     return { x, y };
   }
 
-  // Function to calculate tangent angle at point on curve
   function getTangentAngle(t) {
     const delta = 0.01;
     const p1 = getPointOnCurve(Math.max(0, t - delta));
@@ -372,7 +364,6 @@ function createShootingStar(fromClick = false) {
     return Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
   }
 
-  // Animate the shooting star along the curve
   let animationProgress = 0;
   const animationStep = 1 / (duration * 60);
 
@@ -389,20 +380,16 @@ function createShootingStar(fromClick = false) {
       return;
     }
 
-    // Get current position on curve
     const currentPos = getPointOnCurve(animationProgress);
     const angle = getTangentAngle(animationProgress);
 
-    // Update shooting star position and rotation
     shootingStar.style.left = currentPos.x + 'px';
     shootingStar.style.top = currentPos.y + 'px';
     shootingStar.style.transform = `rotate(${angle}deg)`;
 
-    // Dynamic tail stretching based on speed
     const speed = Math.abs(Math.sin(animationProgress * Math.PI * 2)) * 0.3 + 0.7;
     tailContainer.style.transform = `translateY(-50%) scaleX(${0.8 + speed * 0.4})`;
 
-    // Fade in at start and fade out at end
     if (animationProgress < 0.1) {
       shootingStar.style.opacity = animationProgress * 10;
     } else if (animationProgress > 0.85) {
@@ -411,7 +398,6 @@ function createShootingStar(fromClick = false) {
       shootingStar.style.opacity = 1;
     }
 
-    // Pulse effect for star head
     const pulseFactor = 1 + Math.sin(animationProgress * Math.PI * 8) * 0.2;
     starHead.style.transform = `translateY(-50%) scale(${pulseFactor})`;
 
@@ -454,7 +440,6 @@ setTimeout(() => {
   }, 3000);
 }, 2000);
 
-// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -468,7 +453,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Intersection Observer for animations
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '0px 0px -100px 0px'
@@ -479,7 +463,6 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
 
-      // Add staggered animation for skill tags
       if (entry.target.classList.contains('skill-category')) {
         const tags = entry.target.querySelectorAll('.skill-tag');
         tags.forEach((tag, index) => {
@@ -493,19 +476,16 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Observe all reveal elements
 document.querySelectorAll('.reveal').forEach(el => {
   observer.observe(el);
 });
 
-// Initialize skill tag animations
 document.querySelectorAll('.skill-tag').forEach(tag => {
   tag.style.opacity = '0';
   tag.style.transform = 'translateY(20px)';
   tag.style.transition = 'all 0.3s ease';
 });
 
-// Navigation scroll effect with active highlighting
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   const scrolled = window.scrollY;
@@ -518,7 +498,6 @@ window.addEventListener('scroll', () => {
     nav.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02))';
   }
 
-  // Active navigation highlighting
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
 
@@ -539,7 +518,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Project card 3D effect
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('mousemove', function (e) {
     const rect = this.getBoundingClientRect();
@@ -560,7 +538,6 @@ document.querySelectorAll('.project-card').forEach(card => {
   });
 });
 
-// Skill tag hover effects with random colors
 document.querySelectorAll('.skill-tag').forEach(tag => {
   tag.addEventListener('mouseenter', function () {
     const colors = ['#00F5FF', '#B24BF3', '#FF0080', '#FFD700'];
@@ -579,7 +556,6 @@ document.querySelectorAll('.skill-tag').forEach(tag => {
   });
 });
 
-// Add floating particles for decoration
 function createFloatingParticles() {
   const particlesContainer = document.createElement('div');
   particlesContainer.style.position = 'fixed';
@@ -631,10 +607,8 @@ particleStyle.textContent = `
 `;
 document.head.appendChild(particleStyle);
 
-// Initialize floating particles
 createFloatingParticles();
 
-// Parallax scrolling effects
 window.addEventListener('scroll', () => {
   const scrolled = window.pageYOffset;
   const parallaxElements = document.querySelectorAll('.hero-avatar');
@@ -645,7 +619,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Back to top button
 const backToTop = document.getElementById('backToTop');
 
 window.addEventListener('scroll', () => {
@@ -663,7 +636,6 @@ backToTop.addEventListener('click', () => {
   });
 });
 
-// Button hover animations
 document.querySelectorAll('.btn').forEach(btn => {
   btn.addEventListener('mouseenter', function () {
     this.style.animation = 'pulse 0.5s ease-in-out';
@@ -674,7 +646,6 @@ document.querySelectorAll('.btn').forEach(btn => {
   });
 });
 
-// Contact link animations
 document.querySelectorAll('.contact-link').forEach(link => {
   link.addEventListener('mouseenter', function () {
     this.style.background = 'linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(178, 75, 243, 0.1))';
@@ -689,7 +660,6 @@ document.querySelectorAll('.contact-link').forEach(link => {
   });
 });
 
-// Glitch effect trigger on hover
 const glitchText = document.querySelector('.glitch-text');
 glitchText.addEventListener('mouseenter', () => {
   glitchText.style.animationDuration = '0.3s';
@@ -699,15 +669,14 @@ glitchText.addEventListener('mouseleave', () => {
   glitchText.style.animationDuration = '725ms';
 });
 
-// Preload images for better performance
 const imageUrls = [
-  'assets/images/HolyCross.png',
-  'assets/images/Catcher.png',
-  'assets/images/Mabel.png',
-  'assets/images/PMA.png',
-  'assets/images/Sender.png',
-  'assets/images/Spotify.png',
-  'assets/images/WSSApply.png'
+  'assets/images/HolyCross.webp',
+  'assets/images/Catcher.webp',
+  'assets/images/Mabel.webp',
+  'assets/images/PMA.webp',
+  'assets/images/Sender.webp',
+  'assets/images/Spotify.webp',
+  'assets/images/WSSApply.webp'
 ];
 
 imageUrls.forEach(url => {
@@ -715,11 +684,9 @@ imageUrls.forEach(url => {
   img.src = url;
 });
 
-// Advanced intersection observer for different animation types
 const advancedObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      // Add different animation classes based on element position
       const rect = entry.boundingClientRect;
       const isFromLeft = rect.left < window.innerWidth / 2;
 
@@ -743,12 +710,10 @@ const advancedObserver = new IntersectionObserver((entries) => {
   rootMargin: '0px 0px -50px 0px'
 });
 
-// Apply advanced observer to specific elements
 document.querySelectorAll('.project-card, .skill-category').forEach(el => {
   advancedObserver.observe(el);
 });
 
-// Performance optimization: Throttle scroll events
 function throttle(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -761,39 +726,32 @@ function throttle(func, wait) {
   };
 }
 
-// Apply throttling to scroll-heavy functions
 const throttledScroll = throttle(() => {
-}, 16); // ~60fps
+}, 16);
 
 window.addEventListener('scroll', throttledScroll);
 
-// Accessibility improvements
 document.addEventListener('keydown', (e) => {
-  // ESC key closes mobile menu
   if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
     mobileMenuToggle.classList.remove('active');
     mobileNav.classList.remove('active');
   }
 
-  // Space or Enter activates buttons
   if ((e.key === ' ' || e.key === 'Enter') && document.activeElement.classList.contains('btn')) {
     e.preventDefault();
     document.activeElement.click();
   }
 });
 
-// Error handling for canvas
 canvas.addEventListener('error', () => {
   console.warn('Canvas rendering error - falling back to CSS animations');
   canvas.style.display = 'none';
 });
 
-// Initialize all components when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Enhanced portfolio loaded successfully');
 });
 
-// Performance monitoring
 if ('performance' in window) {
   window.addEventListener('load', () => {
     const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
