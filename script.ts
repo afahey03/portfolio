@@ -561,27 +561,51 @@ window.addEventListener('scroll', (): void => {
 });
 
 const projectCards = document.querySelectorAll('.project-card') as NodeListOf<HTMLElement>;
-projectCards.forEach((card: HTMLElement): void => {
-  card.addEventListener('mousemove', function (e: MouseEvent): void {
-    const rect: DOMRect = this.getBoundingClientRect();
-    const x: number = e.clientX - rect.left;
-    const y: number = e.clientY - rect.top;
-    const centerX: number = rect.width / 2;
-    const centerY: number = rect.height / 2;
-    const rotateX: number = (y - centerY) / 20;
-    const rotateY: number = (centerX - x) / 20;
 
-    this.style.transitionDelay = '0s';
-    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-    this.style.boxShadow = `${rotateY}px ${-rotateX}px 30px rgba(0, 245, 255, 0.3)`;
+projectCards.forEach((card: HTMLElement): void => {
+  let targetRotateX = 0;
+  let targetRotateY = 0;
+  let currentRotateX = 0;
+  let currentRotateY = 0;
+  let targetShadowX = 0;
+  let targetShadowY = 0;
+  let currentShadowX = 0;
+  let currentShadowY = 0;
+
+  function animate() {
+    currentRotateX += (targetRotateX - currentRotateX) * 0.035;
+    currentRotateY += (targetRotateY - currentRotateY) * 0.035;
+    currentShadowX += (targetShadowX - currentShadowX) * 0.035;
+    currentShadowY += (targetShadowY - currentShadowY) * 0.035;
+
+    card.style.transform = `perspective(1000px) rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) translateY(-10px)`;
+    card.style.boxShadow = `${currentShadowX}px ${currentShadowY}px 30px rgba(0, 245, 255, 0.3)`;
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  card.addEventListener('mousemove', (e: MouseEvent) => {
+    const rect: DOMRect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    targetRotateX = (y - centerY) / 20;
+    targetRotateY = (centerX - x) / 20;
+    targetShadowX = targetRotateY;
+    targetShadowY = -targetRotateX;
   });
 
-  card.addEventListener('mouseleave', function (): void {
-    this.style.transitionDelay = '';
-    this.style.transform = '';
-    this.style.boxShadow = '';
+  card.addEventListener('mouseleave', () => {
+    targetRotateX = 0;
+    targetRotateY = 0;
+    targetShadowX = 0;
+    targetShadowY = 0;
   });
 });
+
 
 const skillTagsInteractive = document.querySelectorAll('.skill-tag') as NodeListOf<HTMLElement>;
 skillTagsInteractive.forEach((tag: HTMLElement): void => {

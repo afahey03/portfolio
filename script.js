@@ -437,22 +437,40 @@ window.addEventListener('scroll', function () {
 });
 var projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach(function (card) {
+    var targetRotateX = 0;
+    var targetRotateY = 0;
+    var currentRotateX = 0;
+    var currentRotateY = 0;
+    var targetShadowX = 0;
+    var targetShadowY = 0;
+    var currentShadowX = 0;
+    var currentShadowY = 0;
+    function animate() {
+        currentRotateX += (targetRotateX - currentRotateX) * 0.035;
+        currentRotateY += (targetRotateY - currentRotateY) * 0.035;
+        currentShadowX += (targetShadowX - currentShadowX) * 0.035;
+        currentShadowY += (targetShadowY - currentShadowY) * 0.035;
+        card.style.transform = "perspective(1000px) rotateX(".concat(currentRotateX, "deg) rotateY(").concat(currentRotateY, "deg) translateY(-10px)");
+        card.style.boxShadow = "".concat(currentShadowX, "px ").concat(currentShadowY, "px 30px rgba(0, 245, 255, 0.3)");
+        requestAnimationFrame(animate);
+    }
+    animate();
     card.addEventListener('mousemove', function (e) {
-        var rect = this.getBoundingClientRect();
+        var rect = card.getBoundingClientRect();
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
         var centerX = rect.width / 2;
         var centerY = rect.height / 2;
-        var rotateX = (y - centerY) / 20;
-        var rotateY = (centerX - x) / 20;
-        this.style.transitionDelay = '0s';
-        this.style.transform = "perspective(1000px) rotateX(".concat(rotateX, "deg) rotateY(").concat(rotateY, "deg) translateY(-10px)");
-        this.style.boxShadow = "".concat(rotateY, "px ").concat(-rotateX, "px 30px rgba(0, 245, 255, 0.3)");
+        targetRotateX = (y - centerY) / 20;
+        targetRotateY = (centerX - x) / 20;
+        targetShadowX = targetRotateY;
+        targetShadowY = -targetRotateX;
     });
     card.addEventListener('mouseleave', function () {
-        this.style.transitionDelay = '';
-        this.style.transform = '';
-        this.style.boxShadow = '';
+        targetRotateX = 0;
+        targetRotateY = 0;
+        targetShadowX = 0;
+        targetShadowY = 0;
     });
 });
 var skillTagsInteractive = document.querySelectorAll('.skill-tag');
