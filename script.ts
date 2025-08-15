@@ -571,11 +571,13 @@ projectCards.forEach((card: HTMLElement): void => {
     const rotateX: number = (y - centerY) / 20;
     const rotateY: number = (centerX - x) / 20;
 
+    this.style.transitionDelay = '0s';
     this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
     this.style.boxShadow = `${rotateY}px ${-rotateX}px 30px rgba(0, 245, 255, 0.3)`;
   });
 
   card.addEventListener('mouseleave', function (): void {
+    this.style.transitionDelay = '';
     this.style.transform = '';
     this.style.boxShadow = '';
   });
@@ -783,6 +785,7 @@ function throttle<T extends (...args: any[]) => any>(func: T, wait: number): (..
 }
 
 const throttledScroll = throttle((): void => {
+  // Maybe add throttled scroll logic later idk
 }, 16);
 
 window.addEventListener('scroll', throttledScroll);

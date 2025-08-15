@@ -445,10 +445,12 @@ projectCards.forEach(function (card) {
         var centerY = rect.height / 2;
         var rotateX = (y - centerY) / 20;
         var rotateY = (centerX - x) / 20;
+        this.style.transitionDelay = '0s';
         this.style.transform = "perspective(1000px) rotateX(".concat(rotateX, "deg) rotateY(").concat(rotateY, "deg) translateY(-10px)");
         this.style.boxShadow = "".concat(rotateY, "px ").concat(-rotateX, "px 30px rgba(0, 245, 255, 0.3)");
     });
     card.addEventListener('mouseleave', function () {
+        this.style.transitionDelay = '';
         this.style.transform = '';
         this.style.boxShadow = '';
     });
@@ -618,6 +620,7 @@ function throttle(func, wait) {
     };
 }
 var throttledScroll = throttle(function () {
+    // Maybe add throttled scroll logic later idk
 }, 16);
 window.addEventListener('scroll', throttledScroll);
 document.addEventListener('keydown', function (e) {
