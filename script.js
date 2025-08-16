@@ -343,10 +343,10 @@ document.addEventListener('click', function (e) {
         createShootingStar(true);
     }
 });
-var logo = document.querySelector('.logo');
+var logo = document.querySelector('.avatar-image');
 var logoHoverTimeout;
 if (logo) {
-    logo.addEventListener('mouseenter', function () {
+    logo.addEventListener('click', function () {
         clearTimeout(logoHoverTimeout);
         logoHoverTimeout = setTimeout(function () {
             if (Math.random() < 0.20) {
