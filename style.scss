@@ -1473,26 +1473,6 @@ footer {
     transform: translateY(0);
   }
 
-  &.slide-left {
-    transform: translateX(-60px);
-    opacity: 0;
-  }
-
-  &.slide-left.active {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  &.slide-right {
-    transform: translateX(60px);
-    opacity: 0;
-  }
-
-  &.slide-right.active {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
   &.fade-in {
     transform: scale(0.8);
     opacity: 0;

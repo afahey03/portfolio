@@ -1289,22 +1289,6 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
-.reveal.slide-left {
-  transform: translateX(-60px);
-  opacity: 0;
-}
-.reveal.slide-left.active {
-  transform: translateX(0);
-  opacity: 1;
-}
-.reveal.slide-right {
-  transform: translateX(60px);
-  opacity: 0;
-}
-.reveal.slide-right.active {
-  transform: translateX(0);
-  opacity: 1;
-}
 .reveal.fade-in {
   transform: scale(0.8);
   opacity: 0;

@@ -601,16 +601,6 @@ var advancedObserverOptions = {
 var advancedObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry, index) {
         if (entry.isIntersecting) {
-            var rect = entry.boundingClientRect;
-            var isFromLeft = rect.left < window.innerWidth / 2;
-            if (entry.target.classList.contains('project-card')) {
-                if (index % 2 === 0) {
-                    entry.target.classList.add('slide-left');
-                }
-                else {
-                    entry.target.classList.add('slide-right');
-                }
-            }
             if (entry.target.classList.contains('skill-category')) {
                 entry.target.classList.add('fade-in');
             }

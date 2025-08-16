@@ -771,21 +771,9 @@ const advancedObserverOptions: IntersectionObserverInit = {
 const advancedObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]): void => {
   entries.forEach((entry: IntersectionObserverEntry, index: number): void => {
     if (entry.isIntersecting) {
-      const rect: DOMRect = entry.boundingClientRect;
-      const isFromLeft: boolean = rect.left < window.innerWidth / 2;
-
-      if (entry.target.classList.contains('project-card')) {
-        if (index % 2 === 0) {
-          entry.target.classList.add('slide-left');
-        } else {
-          entry.target.classList.add('slide-right');
-        }
-      }
-
       if (entry.target.classList.contains('skill-category')) {
         entry.target.classList.add('fade-in');
       }
-
       entry.target.classList.add('active');
     }
   });
