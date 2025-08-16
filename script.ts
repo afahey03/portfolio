@@ -457,16 +457,12 @@ document.addEventListener('click', (e: MouseEvent): void => {
 });
 
 const logo = document.querySelector('.avatar-image') as HTMLElement;
-let logoHoverTimeout: number;
 
 if (logo) {
   logo.addEventListener('click', (): void => {
-    clearTimeout(logoHoverTimeout);
-    logoHoverTimeout = setTimeout((): void => {
-      if (Math.random() < 0.20) {
-        createShootingStar(true);
-      }
-    }, 100);
+    if (Math.random() < 0.20) {
+      createShootingStar(true);
+    }
   });
 }
 

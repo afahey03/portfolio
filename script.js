@@ -344,15 +344,11 @@ document.addEventListener('click', function (e) {
     }
 });
 var logo = document.querySelector('.avatar-image');
-var logoHoverTimeout;
 if (logo) {
     logo.addEventListener('click', function () {
-        clearTimeout(logoHoverTimeout);
-        logoHoverTimeout = setTimeout(function () {
-            if (Math.random() < 0.20) {
-                createShootingStar(true);
-            }
-        }, 100);
+        if (Math.random() < 0.20) {
+            createShootingStar(true);
+        }
     });
 }
 setTimeout(function () {
