@@ -338,14 +338,14 @@ function scheduleShootingStar() {
         scheduleShootingStar();
     }, delay);
 }
-document.addEventListener('click', function (e) {
+document.addEventListener('click', function () {
     if (Math.random() < 0.05) {
         createShootingStar(true);
     }
 });
 var logo = document.querySelector('.avatar-image');
 if (logo) {
-    logo.addEventListener('click', function () {
+    logo.addEventListener('mouseenter', function () {
         if (Math.random() < 0.20) {
             createShootingStar(true);
         }

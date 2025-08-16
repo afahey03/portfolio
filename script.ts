@@ -450,16 +450,15 @@ function scheduleShootingStar(): void {
   }, delay);
 }
 
-document.addEventListener('click', (e: MouseEvent): void => {
+document.addEventListener('click', (): void => {
   if (Math.random() < 0.05) {
     createShootingStar(true);
   }
 });
 
 const logo = document.querySelector('.avatar-image') as HTMLElement;
-
 if (logo) {
-  logo.addEventListener('click', (): void => {
+  logo.addEventListener('mouseenter', (): void => {
     if (Math.random() < 0.20) {
       createShootingStar(true);
     }
