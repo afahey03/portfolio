@@ -6,9 +6,9 @@ Personal portfolio website showcasing my work as a software developer.
 [View Portfolio](http://afahey03.com/)
 
 ## 💻 Technologies Used
-- HTML5
-- CSS3 (with CSS Variables and Animations)
-- Vanilla JavaScript
+- HTML
+- SCSS / CSS
+- TypeScript / JavaScript
 
 ## 🎨 Features
 - Smooth scrolling navigation
