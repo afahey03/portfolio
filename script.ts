@@ -832,3 +832,104 @@ if ('performance' in window) {
     }
   });
 }
+
+(function initCvOrbitV2() {
+  const cvBtn = document.getElementById('cvOrbitBtn') as HTMLButtonElement | null;
+  if (!cvBtn) return;
+
+  const RESUME_PATH = 'assets/docs/AidanFaheyResume2025.pdf';
+
+  const anchorVH = 0.72;
+  const easingY = 0.12;
+  const wobbleAmpX = 9;
+  const wobbleAmpY = 8;
+  const wobbleSpeed1 = 0.0012;
+  const wobbleSpeed2 = 0.0019;
+
+  let inertialY = 0;
+  const inertialDecay = 0.90;
+  const inertialGain = 0.18;
+
+  let currentY = window.innerHeight * anchorVH;
+
+  let onLeft = false;
+  let lastScrollY = window.scrollY;
+  let cumulativeAbsScroll = 0;
+  const flipThresholdPx = 2400;
+
+  let sideShiftX = 0;
+  let sideTargetX = 0;
+  const easingSide = 0.05;
+
+  function computeLeftShift(): number {
+    const margin = 22;
+    const btnW = cvBtn ? cvBtn.offsetWidth : 48;
+    return -Math.max(0, window.innerWidth - (margin * 2 + btnW));
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setSideTarget() {
+    sideTargetX = onLeft ? computeLeftShift() : 0;
+  }
+  setSideTarget();
+
+  window.addEventListener('scroll', () => {
+    const dy = window.scrollY - lastScrollY;
+    lastScrollY = window.scrollY;
+
+    inertialY += dy * inertialGain;
+
+    cumulativeAbsScroll += Math.abs(dy);
+    if (cumulativeAbsScroll >= flipThresholdPx) {
+      onLeft = !onLeft;
+      setSideTarget();
+      cumulativeAbsScroll = 0;
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    currentY = clamp(currentY, 64, window.innerHeight - 64);
+    setSideTarget();
+  });
+
+  function tick(now: number) {
+    if (!prefersReduced) {
+      const wobbleX = Math.sin(now * wobbleSpeed1) * wobbleAmpX + Math.sin(now * wobbleSpeed2) * 0.5 * wobbleAmpX;
+      const wobbleY = Math.cos(now * wobbleSpeed2) * wobbleAmpY;
+
+      const baseTargetY = window.innerHeight * anchorVH;
+      const targetY = clamp(baseTargetY + wobbleY + inertialY, 56, window.innerHeight - 56);
+      currentY += (targetY - currentY) * easingY;
+
+      sideShiftX += (sideTargetX - sideShiftX) * easingSide;
+
+      inertialY *= inertialDecay;
+
+      cvBtn!.style.transform = `translate3d(${wobbleX + sideShiftX}px, ${Math.round(currentY)}px, 0)`;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  cvBtn.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = RESUME_PATH;
+    link.setAttribute('download', RESUME_PATH.split('/').pop() || 'resume.pdf');
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  });
+
+  cvBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      cvBtn.click();
+    }
+  });
+
+  function clamp(v: number, min: number, max: number) {
+    return Math.max(min, Math.min(max, v));
+  }
+})();
+

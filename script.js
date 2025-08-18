@@ -1,34 +1,35 @@
-var particles = [];
-var mouseX = 0;
-var mouseY = 0;
-var canvas = null;
-var ctx = null;
-window.addEventListener('load', function () {
-    setTimeout(function () {
-        var loadingScreen = document.getElementById('loadingScreen');
+"use strict";
+let particles = [];
+let mouseX = 0;
+let mouseY = 0;
+let canvas = null;
+let ctx = null;
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loadingScreen = document.getElementById('loadingScreen');
         if (loadingScreen) {
             loadingScreen.classList.add('hidden');
         }
     }, 1000);
 });
-var cursor = document.getElementById('cursor');
-var cursorTrail = document.getElementById('cursorTrail');
-var trailX = 0;
-var trailY = 0;
-var smoothing = 0.2;
-document.addEventListener('mousemove', function (e) {
+const cursor = document.getElementById('cursor');
+const cursorTrail = document.getElementById('cursorTrail');
+let trailX = 0;
+let trailY = 0;
+const smoothing = 0.2;
+document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     if (cursor) {
-        requestAnimationFrame(function () {
+        requestAnimationFrame(() => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
     }
 });
 function animateTrail() {
-    var dx = mouseX - trailX;
-    var dy = mouseY - trailY;
+    const dx = mouseX - trailX;
+    const dy = mouseY - trailY;
     trailX += dx * smoothing;
     trailY += dy * smoothing;
     if (cursorTrail) {
@@ -38,60 +39,60 @@ function animateTrail() {
     requestAnimationFrame(animateTrail);
 }
 animateTrail();
-var interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
-interactiveElements.forEach(function (el) {
-    el.addEventListener('mouseenter', function () {
+const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
+interactiveElements.forEach((el) => {
+    el.addEventListener('mouseenter', () => {
         if (cursor) {
             cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
             cursor.style.borderColor = '#FF0080';
         }
     });
-    el.addEventListener('mouseleave', function () {
+    el.addEventListener('mouseleave', () => {
         if (cursor) {
             cursor.style.transform = 'translate(-50%, -50%) scale(1)';
             cursor.style.borderColor = '#00F5FF';
         }
     });
 });
-window.addEventListener('scroll', function () {
-    var scrollTop = window.pageYOffset;
-    var docHeight = document.body.offsetHeight - window.innerHeight;
-    var scrollPercent = (scrollTop / docHeight) * 100;
-    var scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    const scrollProgress = document.getElementById('scrollProgress');
     if (scrollProgress) {
         scrollProgress.style.width = scrollPercent + '%';
     }
 });
-var themeToggle = document.getElementById('themeToggle');
-var body = document.body;
-var savedTheme = localStorage.getItem('theme') || 'dark';
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+const savedTheme = localStorage.getItem('theme') || 'dark';
 body.setAttribute('data-theme', savedTheme);
 if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-        var currentTheme = body.getAttribute('data-theme');
-        var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
         body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
     });
 }
-var mobileMenuToggle = document.getElementById('mobileMenuToggle');
-var mobileNav = document.getElementById('mobileNav');
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileNav = document.getElementById('mobileNav');
 if (mobileMenuToggle && mobileNav) {
-    mobileMenuToggle.addEventListener('click', function () {
+    mobileMenuToggle.addEventListener('click', () => {
         mobileMenuToggle.classList.toggle('active');
         mobileNav.classList.toggle('active');
     });
 }
-var mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-mobileNavLinks.forEach(function (link) {
-    link.addEventListener('click', function () {
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+mobileNavLinks.forEach((link) => {
+    link.addEventListener('click', () => {
         if (mobileMenuToggle && mobileNav) {
             mobileMenuToggle.classList.remove('active');
             mobileNav.classList.remove('active');
         }
     });
 });
-var typingTexts = [
+const typingTexts = [
     'Software Developer',
     'Full-Stack Engineer',
     'Problem Solver',
@@ -99,12 +100,12 @@ var typingTexts = [
     'Code Architect',
     'Led Zeppelin Fan'
 ];
-var currentTextIndex = 0;
-var currentCharIndex = 0;
-var isDeleting = false;
-var typingElement = document.getElementById('typingText');
+let currentTextIndex = 0;
+let currentCharIndex = 0;
+let isDeleting = false;
+const typingElement = document.getElementById('typingText');
 function typeWriter() {
-    var currentText = typingTexts[currentTextIndex];
+    const currentText = typingTexts[currentTextIndex];
     if (isDeleting) {
         if (typingElement) {
             typingElement.textContent = currentText.substring(0, currentCharIndex - 1);
@@ -117,7 +118,7 @@ function typeWriter() {
         }
         currentCharIndex++;
     }
-    var typeSpeed = isDeleting ? 50 : 100;
+    let typeSpeed = isDeleting ? 50 : 100;
     if (!isDeleting && currentCharIndex === currentText.length) {
         typeSpeed = 2000;
         isDeleting = true;
@@ -131,20 +132,20 @@ function typeWriter() {
 }
 setTimeout(typeWriter, 1000);
 function initParticleSystem() {
-    var canvasElement = document.getElementById('particleCanvas');
+    const canvasElement = document.getElementById('particleCanvas');
     if (!canvasElement)
         return;
     canvas = canvasElement;
-    var context = canvas.getContext('2d');
+    const context = canvas.getContext('2d');
     if (!context)
         return;
     ctx = context;
-    var particleCount = 120;
-    var repulsionRadius = 150;
-    var restoreForce = 0.002;
-    var damping = 0.95;
-    var scrollY = 0;
-    var scrollSpeed = 0.5;
+    const particleCount = 120;
+    const repulsionRadius = 150;
+    const restoreForce = 0.002;
+    const damping = 0.95;
+    let scrollY = 0;
+    const scrollSpeed = 0.5;
     function resizeCanvas() {
         if (!canvas)
             return;
@@ -153,10 +154,10 @@ function initParticleSystem() {
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-    var totalHeight = document.documentElement.scrollHeight;
-    for (var i = 0; i < particleCount; i++) {
-        var x = Math.random() * ((canvas === null || canvas === void 0 ? void 0 : canvas.width) || window.innerWidth);
-        var y = Math.random() * totalHeight * 0.7;
+    const totalHeight = document.documentElement.scrollHeight;
+    for (let i = 0; i < particleCount; i++) {
+        const x = Math.random() * (canvas?.width || window.innerWidth);
+        const y = Math.random() * totalHeight * 0.7;
         particles.push({
             x: x,
             y: y,
@@ -165,25 +166,25 @@ function initParticleSystem() {
             vx: 0,
             vy: 0,
             size: Math.random() * 2 + 1,
-            color: "hsl(".concat(180 + Math.random() * 60, ", 70%, 60%)"),
+            color: `hsl(${180 + Math.random() * 60}, 70%, 60%)`,
             alpha: Math.random() * 0.5 + 0.3
         });
     }
-    window.addEventListener('scroll', function () {
+    window.addEventListener('scroll', () => {
         scrollY = window.pageYOffset;
     });
     function drawParticles() {
         if (!ctx || !canvas)
             return;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(function (p) {
-            var scrollAdjustedY = p.y - (scrollY * scrollSpeed);
+        particles.forEach((p) => {
+            const scrollAdjustedY = p.y - (scrollY * scrollSpeed);
             if (scrollAdjustedY > -100 && scrollAdjustedY < canvas.height + 100) {
-                var dx = p.x - mouseX;
-                var dy = scrollAdjustedY - mouseY;
-                var distance = Math.sqrt(dx * dx + dy * dy);
+                const dx = p.x - mouseX;
+                const dy = scrollAdjustedY - mouseY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < repulsionRadius) {
-                    var force = (repulsionRadius - distance) / repulsionRadius;
+                    const force = (repulsionRadius - distance) / repulsionRadius;
                     p.vx += (dx / distance) * force * 0.5;
                     p.vy += (dy / distance) * force * 0.5;
                 }
@@ -192,7 +193,7 @@ function initParticleSystem() {
                 p.vx *= damping;
                 p.vy *= damping;
                 p.x += p.vx;
-                var newY = scrollAdjustedY + p.vy;
+                const newY = scrollAdjustedY + p.vy;
                 p.y = newY + (scrollY * scrollSpeed);
                 if (p.x < 0 || p.x > canvas.width)
                     p.vx *= -1;
@@ -208,25 +209,24 @@ function initParticleSystem() {
     drawParticles();
 }
 initParticleSystem();
-function createShootingStar(fromClick) {
-    if (fromClick === void 0) { fromClick = false; }
-    var shootingStar = document.createElement('div');
+function createShootingStar(fromClick = false) {
+    const shootingStar = document.createElement('div');
     shootingStar.className = 'shooting-star';
-    var startX = -100;
-    var startY = Math.random() * (window.innerHeight * 0.4);
-    var endX = window.innerWidth + 200;
-    var endY = window.innerHeight - Math.random() * (window.innerHeight * 0.4);
-    var deltaX = endX - startX;
-    var deltaY = endY - startY;
-    var controlX = startX + deltaX / 2;
-    var controlY = Math.min(startY, endY) - (Math.random() * 100 + 50);
-    var duration = fromClick ? 1.5 : 2.5;
+    const startX = -100;
+    const startY = Math.random() * (window.innerHeight * 0.4);
+    const endX = window.innerWidth + 200;
+    const endY = window.innerHeight - Math.random() * (window.innerHeight * 0.4);
+    const deltaX = endX - startX;
+    const deltaY = endY - startY;
+    const controlX = startX + deltaX / 2;
+    const controlY = Math.min(startY, endY) - (Math.random() * 100 + 50);
+    const duration = fromClick ? 1.5 : 2.5;
     shootingStar.style.position = 'fixed';
     shootingStar.style.zIndex = '9999';
     shootingStar.style.pointerEvents = 'none';
     shootingStar.style.width = '250px';
     shootingStar.style.height = '30px';
-    var starHead = document.createElement('div');
+    const starHead = document.createElement('div');
     starHead.className = 'star-head';
     starHead.style.position = 'absolute';
     starHead.style.right = '0';
@@ -236,10 +236,19 @@ function createShootingStar(fromClick) {
     starHead.style.height = fromClick ? '12px' : '10px';
     starHead.style.background = '#ffffff';
     starHead.style.borderRadius = '50%';
-    starHead.style.boxShadow = fromClick ? "\n    0 0 20px #ffffff,\n    0 0 40px #00F5FF,\n    0 0 60px #00F5FF,\n    0 0 80px #B24BF3,\n    0 0 100px #00F5FF" : "\n    0 0 15px #ffffff,\n    0 0 30px #00F5FF,\n    0 0 45px #00F5FF,\n    0 0 60px #00F5FF";
+    starHead.style.boxShadow = fromClick ? `
+    0 0 20px #ffffff,
+    0 0 40px #00F5FF,
+    0 0 60px #00F5FF,
+    0 0 80px #B24BF3,
+    0 0 100px #00F5FF` : `
+    0 0 15px #ffffff,
+    0 0 30px #00F5FF,
+    0 0 45px #00F5FF,
+    0 0 60px #00F5FF`;
     starHead.style.zIndex = '10';
     shootingStar.appendChild(starHead);
-    var tailContainer = document.createElement('div');
+    const tailContainer = document.createElement('div');
     tailContainer.style.position = 'absolute';
     tailContainer.style.right = '6px';
     tailContainer.style.top = '50%';
@@ -248,7 +257,7 @@ function createShootingStar(fromClick) {
     tailContainer.style.height = '30px';
     tailContainer.style.transformOrigin = 'right center';
     tailContainer.style.zIndex = '1';
-    var mainTail = document.createElement('div');
+    const mainTail = document.createElement('div');
     mainTail.style.position = 'absolute';
     mainTail.style.width = '100%';
     mainTail.style.height = '2px';
@@ -256,68 +265,88 @@ function createShootingStar(fromClick) {
     mainTail.style.left = '0';
     mainTail.style.transform = 'translateY(-50%)';
     mainTail.style.background = fromClick ?
-        "linear-gradient(to left, \n      rgba(255, 255, 255, 1) 0%,\n      rgba(178, 75, 243, 0.9) 10%,\n      rgba(0, 245, 255, 0.8) 20%,\n      rgba(0, 245, 255, 0.6) 40%,\n      rgba(0, 245, 255, 0.3) 70%,\n      transparent 100%)" :
-        "linear-gradient(to left, \n      rgba(255, 255, 255, 1) 0%,\n      rgba(0, 245, 255, 0.9) 10%,\n      rgba(0, 245, 255, 0.7) 30%,\n      rgba(0, 245, 255, 0.4) 60%,\n      transparent 100%)";
+        `linear-gradient(to left, 
+      rgba(255, 255, 255, 1) 0%,
+      rgba(178, 75, 243, 0.9) 10%,
+      rgba(0, 245, 255, 0.8) 20%,
+      rgba(0, 245, 255, 0.6) 40%,
+      rgba(0, 245, 255, 0.3) 70%,
+      transparent 100%)` :
+        `linear-gradient(to left, 
+      rgba(255, 255, 255, 1) 0%,
+      rgba(0, 245, 255, 0.9) 10%,
+      rgba(0, 245, 255, 0.7) 30%,
+      rgba(0, 245, 255, 0.4) 60%,
+      transparent 100%)`;
     mainTail.style.borderRadius = '1px';
     tailContainer.appendChild(mainTail);
-    for (var i = 1; i <= 3; i++) {
-        var glowLayer = document.createElement('div');
+    for (let i = 1; i <= 3; i++) {
+        const glowLayer = document.createElement('div');
         glowLayer.style.position = 'absolute';
         glowLayer.style.width = '100%';
-        glowLayer.style.height = "".concat(8 + i * 4, "px");
+        glowLayer.style.height = `${8 + i * 4}px`;
         glowLayer.style.top = '50%';
         glowLayer.style.left = '0';
         glowLayer.style.transform = 'translateY(-50%)';
         glowLayer.style.background = fromClick ?
-            "linear-gradient(to left, \n        rgba(178, 75, 243, ".concat(0.5 - i * 0.1, ") 0%,\n        rgba(0, 245, 255, ").concat(0.4 - i * 0.1, ") 20%,\n        transparent 80%)") :
-            "linear-gradient(to left, \n        rgba(0, 245, 255, ".concat(0.4 - i * 0.1, ") 0%,\n        rgba(0, 245, 255, ").concat(0.2 - i * 0.05, ") 40%,\n        transparent 80%)");
-        glowLayer.style.filter = "blur(".concat(i * 2, "px)");
+            `linear-gradient(to left, 
+        rgba(178, 75, 243, ${0.5 - i * 0.1}) 0%,
+        rgba(0, 245, 255, ${0.4 - i * 0.1}) 20%,
+        transparent 80%)` :
+            `linear-gradient(to left, 
+        rgba(0, 245, 255, ${0.4 - i * 0.1}) 0%,
+        rgba(0, 245, 255, ${0.2 - i * 0.05}) 40%,
+        transparent 80%)`;
+        glowLayer.style.filter = `blur(${i * 2}px)`;
         glowLayer.style.borderRadius = '4px';
         tailContainer.appendChild(glowLayer);
     }
-    var connector = document.createElement('div');
+    const connector = document.createElement('div');
     connector.style.position = 'absolute';
     connector.style.width = '30px';
     connector.style.height = '20px';
     connector.style.right = '-5px';
     connector.style.top = '50%';
     connector.style.transform = 'translateY(-50%)';
-    connector.style.background = "radial-gradient(ellipse at right center, \n    rgba(255, 255, 255, 0.8) 0%,\n    rgba(0, 245, 255, 0.5) 30%,\n    transparent 70%)";
+    connector.style.background = `radial-gradient(ellipse at right center, 
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(0, 245, 255, 0.5) 30%,
+    transparent 70%)`;
     connector.style.filter = 'blur(3px)';
     tailContainer.appendChild(connector);
     shootingStar.appendChild(tailContainer);
     document.body.appendChild(shootingStar);
     function getPointOnCurve(t) {
-        var x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * controlX + t * t * endX;
-        var y = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * controlY + t * t * endY;
-        return { x: x, y: y };
+        const x = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * controlX + t * t * endX;
+        const y = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * controlY + t * t * endY;
+        return { x, y };
     }
     function getTangentAngle(t) {
-        var delta = 0.01;
-        var p1 = getPointOnCurve(Math.max(0, t - delta));
-        var p2 = getPointOnCurve(Math.min(1, t + delta));
+        const delta = 0.01;
+        const p1 = getPointOnCurve(Math.max(0, t - delta));
+        const p2 = getPointOnCurve(Math.min(1, t + delta));
         return Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
     }
-    var animationProgress = 0;
-    var animationStep = 1 / (duration * 60);
-    var animationInterval = setInterval(function () {
+    let animationProgress = 0;
+    const animationStep = 1 / (duration * 60);
+    const animationInterval = setInterval(() => {
         animationProgress += animationStep;
         if (animationProgress >= 1) {
             clearInterval(animationInterval);
-            setTimeout(function () {
+            setTimeout(() => {
                 if (shootingStar.parentNode) {
                     shootingStar.remove();
                 }
             }, 200);
             return;
         }
-        var currentPos = getPointOnCurve(animationProgress);
-        var angle = getTangentAngle(animationProgress);
+        const currentPos = getPointOnCurve(animationProgress);
+        const angle = getTangentAngle(animationProgress);
         shootingStar.style.left = currentPos.x + 'px';
         shootingStar.style.top = currentPos.y + 'px';
-        shootingStar.style.transform = "rotate(".concat(angle, "deg)");
-        var speed = Math.abs(Math.sin(animationProgress * Math.PI * 2)) * 0.3 + 0.7;
-        tailContainer.style.transform = "translateY(-50%) scaleX(".concat(0.8 + speed * 0.4, ")");
+        shootingStar.style.transform = `rotate(${angle}deg)`;
+        const speed = Math.abs(Math.sin(animationProgress * Math.PI * 2)) * 0.3 + 0.7;
+        tailContainer.style.transform = `translateY(-50%) scaleX(${0.8 + speed * 0.4})`;
         if (animationProgress < 0.1) {
             shootingStar.style.opacity = (animationProgress * 10).toString();
         }
@@ -327,41 +356,41 @@ function createShootingStar(fromClick) {
         else {
             shootingStar.style.opacity = '1';
         }
-        var pulseFactor = 1 + Math.sin(animationProgress * Math.PI * 8) * 0.2;
-        starHead.style.transform = "translateY(-50%) scale(".concat(pulseFactor, ")");
+        const pulseFactor = 1 + Math.sin(animationProgress * Math.PI * 8) * 0.2;
+        starHead.style.transform = `translateY(-50%) scale(${pulseFactor})`;
     }, 1000 / 60);
 }
 function scheduleShootingStar() {
-    var delay = (Math.random() * 30 + 60) * 1000;
-    setTimeout(function () {
+    const delay = (Math.random() * 30 + 60) * 1000;
+    setTimeout(() => {
         createShootingStar();
         scheduleShootingStar();
     }, delay);
 }
-document.addEventListener('click', function () {
+document.addEventListener('click', () => {
     if (Math.random() < 0.05) {
         createShootingStar(true);
     }
 });
-var logo = document.querySelector('.avatar-image');
+const logo = document.querySelector('.avatar-image');
 if (logo) {
-    logo.addEventListener('mouseenter', function () {
+    logo.addEventListener('mouseenter', () => {
         if (Math.random() < 0.20) {
             createShootingStar(true);
         }
     });
 }
-setTimeout(function () {
-    setTimeout(function () {
+setTimeout(() => {
+    setTimeout(() => {
         createShootingStar();
         scheduleShootingStar();
     }, 3000);
 }, 2000);
-var hashLinks = document.querySelectorAll('a[href^="#"]');
-hashLinks.forEach(function (anchor) {
+const hashLinks = document.querySelectorAll('a[href^="#"]');
+hashLinks.forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        var target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(this.getAttribute('href'));
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -370,18 +399,18 @@ hashLinks.forEach(function (anchor) {
         }
     });
 });
-var observerOptions = {
+const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
 };
-var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
             if (entry.target.classList.contains('skill-category')) {
-                var tags = entry.target.querySelectorAll('.skill-tag');
-                tags.forEach(function (tag, index) {
-                    setTimeout(function () {
+                const tags = entry.target.querySelectorAll('.skill-tag');
+                tags.forEach((tag, index) => {
+                    setTimeout(() => {
                         tag.style.opacity = '1';
                         tag.style.transform = 'translateY(0)';
                     }, index * 100);
@@ -390,19 +419,19 @@ var observer = new IntersectionObserver(function (entries) {
         }
     });
 }, observerOptions);
-var revealElements = document.querySelectorAll('.reveal');
-revealElements.forEach(function (el) {
+const revealElements = document.querySelectorAll('.reveal');
+revealElements.forEach((el) => {
     observer.observe(el);
 });
-var skillTags = document.querySelectorAll('.skill-tag');
-skillTags.forEach(function (tag) {
+const skillTags = document.querySelectorAll('.skill-tag');
+skillTags.forEach((tag) => {
     tag.style.opacity = '0';
     tag.style.transform = 'translateY(20px)';
     tag.style.transition = 'all 0.3s ease';
 });
-window.addEventListener('scroll', function () {
-    var nav = document.querySelector('nav');
-    var scrolled = window.scrollY;
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    const scrolled = window.scrollY;
     if (nav) {
         if (scrolled > 100) {
             nav.style.transform = 'translateX(-50%) scale(0.95)';
@@ -413,69 +442,68 @@ window.addEventListener('scroll', function () {
             nav.style.background = 'linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02))';
         }
     }
-    var sections = document.querySelectorAll('section');
-    var navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
-    var current = '';
-    sections.forEach(function (section) {
-        var sectionTop = section.offsetTop;
-        var sectionHeight = section.clientHeight;
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
+    let current = '';
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
         if (scrolled >= sectionTop - 200) {
             current = section.getAttribute('id') || '';
         }
     });
-    navLinks.forEach(function (link) {
-        var _a;
+    navLinks.forEach((link) => {
         link.classList.remove('active');
-        if (((_a = link.getAttribute('href')) === null || _a === void 0 ? void 0 : _a.slice(1)) === current) {
+        if (link.getAttribute('href')?.slice(1) === current) {
             link.classList.add('active');
         }
     });
 });
-var projectCards = document.querySelectorAll('.project-card');
-projectCards.forEach(function (card) {
-    var targetRotateX = 0;
-    var targetRotateY = 0;
-    var currentRotateX = 0;
-    var currentRotateY = 0;
-    var targetShadowX = 0;
-    var targetShadowY = 0;
-    var currentShadowX = 0;
-    var currentShadowY = 0;
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach((card) => {
+    let targetRotateX = 0;
+    let targetRotateY = 0;
+    let currentRotateX = 0;
+    let currentRotateY = 0;
+    let targetShadowX = 0;
+    let targetShadowY = 0;
+    let currentShadowX = 0;
+    let currentShadowY = 0;
     function animate() {
         currentRotateX += (targetRotateX - currentRotateX) * 0.035;
         currentRotateY += (targetRotateY - currentRotateY) * 0.035;
         currentShadowX += (targetShadowX - currentShadowX) * 0.035;
         currentShadowY += (targetShadowY - currentShadowY) * 0.035;
-        card.style.transform = "perspective(1000px) rotateX(".concat(currentRotateX, "deg) rotateY(").concat(currentRotateY, "deg) translateY(-10px)");
-        card.style.boxShadow = "".concat(currentShadowX, "px ").concat(currentShadowY, "px 30px rgba(0, 245, 255, 0.3)");
+        card.style.transform = `perspective(1000px) rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) translateY(-10px)`;
+        card.style.boxShadow = `${currentShadowX}px ${currentShadowY}px 30px rgba(0, 245, 255, 0.3)`;
         requestAnimationFrame(animate);
     }
     animate();
-    card.addEventListener('mousemove', function (e) {
-        var rect = card.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
-        var centerX = rect.width / 2;
-        var centerY = rect.height / 2;
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
         targetRotateX = (y - centerY) / 20;
         targetRotateY = (centerX - x) / 20;
         targetShadowX = targetRotateY;
         targetShadowY = -targetRotateX;
     });
-    card.addEventListener('mouseleave', function () {
+    card.addEventListener('mouseleave', () => {
         targetRotateX = 0;
         targetRotateY = 0;
         targetShadowX = 0;
         targetShadowY = 0;
     });
 });
-var skillTagsInteractive = document.querySelectorAll('.skill-tag');
-skillTagsInteractive.forEach(function (tag) {
+const skillTagsInteractive = document.querySelectorAll('.skill-tag');
+skillTagsInteractive.forEach((tag) => {
     tag.addEventListener('mouseenter', function () {
-        var colors = ['#00F5FF', '#B24BF3', '#FF0080', '#FFD700'];
-        var randomColor = colors[Math.floor(Math.random() * colors.length)];
+        const colors = ['#00F5FF', '#B24BF3', '#FF0080', '#FFD700'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
         this.style.borderColor = randomColor;
-        this.style.boxShadow = "0 0 30px ".concat(randomColor, "40");
+        this.style.boxShadow = `0 0 30px ${randomColor}40`;
         this.style.color = randomColor;
         this.style.transform = 'translateY(-3px) scale(1.05)';
     });
@@ -487,7 +515,7 @@ skillTagsInteractive.forEach(function (tag) {
     });
 });
 function createFloatingParticles() {
-    var particlesContainer = document.createElement('div');
+    const particlesContainer = document.createElement('div');
     particlesContainer.style.position = 'fixed';
     particlesContainer.style.top = '0';
     particlesContainer.style.left = '0';
@@ -497,8 +525,8 @@ function createFloatingParticles() {
     particlesContainer.style.zIndex = '1';
     particlesContainer.style.overflow = 'hidden';
     document.body.appendChild(particlesContainer);
-    for (var i = 0; i < 20; i++) {
-        var particle = document.createElement('div');
+    for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
         particle.style.position = 'absolute';
         particle.style.width = Math.random() * 4 + 2 + 'px';
         particle.style.height = particle.style.width;
@@ -507,26 +535,43 @@ function createFloatingParticles() {
         particle.style.left = Math.random() * 100 + 'vw';
         particle.style.top = Math.random() * 100 + 'vh';
         particle.style.opacity = (Math.random() * 0.3 + 0.1).toString();
-        particle.style.boxShadow = "0 0 ".concat(Math.random() * 10 + 5, "px currentColor");
-        particle.style.animation = "floatParticle ".concat(Math.random() * 20 + 10, "s linear infinite");
+        particle.style.boxShadow = `0 0 ${Math.random() * 10 + 5}px currentColor`;
+        particle.style.animation = `floatParticle ${Math.random() * 20 + 10}s linear infinite`;
         particle.style.animationDelay = Math.random() * 10 + 's';
         particlesContainer.appendChild(particle);
     }
 }
-var particleStyle = document.createElement('style');
-particleStyle.textContent = "\n    @keyframes floatParticle {\n        0% {\n            transform: translateY(100vh) translateX(0);\n            opacity: 0;\n        }\n        10% {\n            opacity: 0.3;\n        }\n        90% {\n            opacity: 0.3;\n        }\n        100% {\n            transform: translateY(-100vh) translateX(100px);\n            opacity: 0;\n        }\n    }\n";
+const particleStyle = document.createElement('style');
+particleStyle.textContent = `
+    @keyframes floatParticle {
+        0% {
+            transform: translateY(100vh) translateX(0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.3;
+        }
+        90% {
+            opacity: 0.3;
+        }
+        100% {
+            transform: translateY(-100vh) translateX(100px);
+            opacity: 0;
+        }
+    }
+`;
 document.head.appendChild(particleStyle);
 createFloatingParticles();
-window.addEventListener('scroll', function () {
-    var scrolled = window.pageYOffset;
-    var parallaxElements = document.querySelectorAll('.hero-avatar');
-    parallaxElements.forEach(function (element) {
-        var speed = 0.3;
-        element.style.transform = "translateY(".concat(scrolled * speed, "px)");
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.hero-avatar');
+    parallaxElements.forEach((element) => {
+        const speed = 0.3;
+        element.style.transform = `translateY(${scrolled * speed}px)`;
     });
 });
-var backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', function () {
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
     if (backToTop) {
         if (window.pageYOffset > 300) {
             backToTop.classList.add('visible');
@@ -537,15 +582,15 @@ window.addEventListener('scroll', function () {
     }
 });
 if (backToTop) {
-    backToTop.addEventListener('click', function () {
+    backToTop.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
 }
-var buttons = document.querySelectorAll('.btn');
-buttons.forEach(function (btn) {
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach((btn) => {
     btn.addEventListener('mouseenter', function () {
         this.style.animation = 'pulse 0.5s ease-in-out';
     });
@@ -553,8 +598,8 @@ buttons.forEach(function (btn) {
         this.style.animation = '';
     });
 });
-var contactLinks = document.querySelectorAll('.contact-link');
-contactLinks.forEach(function (link) {
+const contactLinks = document.querySelectorAll('.contact-link');
+contactLinks.forEach((link) => {
     link.addEventListener('mouseenter', function () {
         this.style.background = 'linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(178, 75, 243, 0.1))';
         this.style.borderColor = '#00F5FF';
@@ -566,16 +611,16 @@ contactLinks.forEach(function (link) {
         this.style.transform = '';
     });
 });
-var glitchText = document.querySelector('.glitch-text');
+const glitchText = document.querySelector('.glitch-text');
 if (glitchText) {
-    glitchText.addEventListener('mouseenter', function () {
+    glitchText.addEventListener('mouseenter', () => {
         glitchText.style.animationDuration = '0.3s';
     });
-    glitchText.addEventListener('mouseleave', function () {
+    glitchText.addEventListener('mouseleave', () => {
         glitchText.style.animationDuration = '725ms';
     });
 }
-var imageUrls = [
+const imageUrls = [
     'assets/images/HolyCross.webp',
     'assets/images/Catcher.webp',
     'assets/images/Mabel.webp',
@@ -586,16 +631,16 @@ var imageUrls = [
     'assets/images/Shortcut.webp',
     'assets/images/Chess.webp'
 ];
-imageUrls.forEach(function (url) {
-    var img = new Image();
+imageUrls.forEach((url) => {
+    const img = new Image();
     img.src = url;
 });
-var advancedObserverOptions = {
+const advancedObserverOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
-var advancedObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry, index) {
+const advancedObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
             if (entry.target.classList.contains('skill-category')) {
                 entry.target.classList.add('fade-in');
@@ -604,58 +649,133 @@ var advancedObserver = new IntersectionObserver(function (entries) {
         }
     });
 }, advancedObserverOptions);
-var advancedElements = document.querySelectorAll('.project-card, .skill-category');
-advancedElements.forEach(function (el) {
+const advancedElements = document.querySelectorAll('.project-card, .skill-category');
+advancedElements.forEach((el) => {
     advancedObserver.observe(el);
 });
 function throttle(func, wait) {
-    var timeout;
-    return function executedFunction() {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        var later = function () {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
             clearTimeout(timeout);
-            func.apply(void 0, args);
+            func(...args);
         };
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
 }
-var throttledScroll = throttle(function () {
+const throttledScroll = throttle(() => {
     // Maybe add throttled scroll logic later idk
 }, 16);
 window.addEventListener('scroll', throttledScroll);
-document.addEventListener('keydown', function (e) {
-    var _a;
+document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('active')) {
         if (mobileMenuToggle) {
             mobileMenuToggle.classList.remove('active');
         }
         mobileNav.classList.remove('active');
     }
-    if ((e.key === ' ' || e.key === 'Enter') && ((_a = document.activeElement) === null || _a === void 0 ? void 0 : _a.classList.contains('btn'))) {
+    if ((e.key === ' ' || e.key === 'Enter') && document.activeElement?.classList.contains('btn')) {
         e.preventDefault();
         document.activeElement.click();
     }
 });
-var canvasElement = document.getElementById('particleCanvas');
+const canvasElement = document.getElementById('particleCanvas');
 if (canvasElement) {
-    canvasElement.addEventListener('error', function () {
+    canvasElement.addEventListener('error', () => {
         console.warn('Canvas rendering error - falling back to CSS animations');
         canvasElement.style.display = 'none';
     });
 }
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     console.log('Enhanced portfolio loaded successfully');
 });
 if ('performance' in window) {
-    window.addEventListener('load', function () {
-        var navigation = performance.getEntriesByType('navigation')[0];
+    window.addEventListener('load', () => {
+        const navigation = performance.getEntriesByType('navigation')[0];
         if (navigation) {
-            var loadTime = navigation.loadEventEnd - navigation.loadEventStart;
-            console.log("Page loaded in ".concat(loadTime, "ms"));
+            const loadTime = navigation.loadEventEnd - navigation.loadEventStart;
+            console.log(`Page loaded in ${loadTime}ms`);
         }
     });
 }
+(function initCvOrbitV2() {
+    const cvBtn = document.getElementById('cvOrbitBtn');
+    if (!cvBtn)
+        return;
+    const RESUME_PATH = 'assets/docs/AidanFaheyResume2025.pdf';
+    const anchorVH = 0.72;
+    const easingY = 0.12;
+    const wobbleAmpX = 9;
+    const wobbleAmpY = 8;
+    const wobbleSpeed1 = 0.0012;
+    const wobbleSpeed2 = 0.0019;
+    let inertialY = 0;
+    const inertialDecay = 0.90;
+    const inertialGain = 0.18;
+    let currentY = window.innerHeight * anchorVH;
+    let onLeft = false;
+    let lastScrollY = window.scrollY;
+    let cumulativeAbsScroll = 0;
+    const flipThresholdPx = 2400;
+    let sideShiftX = 0;
+    let sideTargetX = 0;
+    const easingSide = 0.05;
+    function computeLeftShift() {
+        const margin = 22;
+        const btnW = cvBtn ? cvBtn.offsetWidth : 48;
+        return -Math.max(0, window.innerWidth - (margin * 2 + btnW));
+    }
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function setSideTarget() {
+        sideTargetX = onLeft ? computeLeftShift() : 0;
+    }
+    setSideTarget();
+    window.addEventListener('scroll', () => {
+        const dy = window.scrollY - lastScrollY;
+        lastScrollY = window.scrollY;
+        inertialY += dy * inertialGain;
+        cumulativeAbsScroll += Math.abs(dy);
+        if (cumulativeAbsScroll >= flipThresholdPx) {
+            onLeft = !onLeft;
+            setSideTarget();
+            cumulativeAbsScroll = 0;
+        }
+    }, { passive: true });
+    window.addEventListener('resize', () => {
+        currentY = clamp(currentY, 64, window.innerHeight - 64);
+        setSideTarget();
+    });
+    function tick(now) {
+        if (!prefersReduced) {
+            const wobbleX = Math.sin(now * wobbleSpeed1) * wobbleAmpX + Math.sin(now * wobbleSpeed2) * 0.5 * wobbleAmpX;
+            const wobbleY = Math.cos(now * wobbleSpeed2) * wobbleAmpY;
+            const baseTargetY = window.innerHeight * anchorVH;
+            const targetY = clamp(baseTargetY + wobbleY + inertialY, 56, window.innerHeight - 56);
+            currentY += (targetY - currentY) * easingY;
+            sideShiftX += (sideTargetX - sideShiftX) * easingSide;
+            inertialY *= inertialDecay;
+            cvBtn.style.transform = `translate3d(${wobbleX + sideShiftX}px, ${Math.round(currentY)}px, 0)`;
+        }
+        requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    cvBtn.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.href = RESUME_PATH;
+        link.setAttribute('download', RESUME_PATH.split('/').pop() || 'resume.pdf');
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    });
+    cvBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            cvBtn.click();
+        }
+    });
+    function clamp(v, min, max) {
+        return Math.max(min, Math.min(max, v));
+    }
+})();
+//# sourceMappingURL=script.js.map

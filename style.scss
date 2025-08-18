@@ -1553,3 +1553,120 @@ footer {
     box-shadow: none !important;
   }
 }
+
+.cv-orbit-btn {
+  position: fixed;
+  top: 0;
+  right: 22px;
+  z-index: 1100;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 245, 255, .7);
+  background:
+    radial-gradient(120% 120% at 30% 30%, rgba(255, 255, 255, .12), rgba(255, 255, 255, .04) 60%, transparent 61%),
+    linear-gradient(135deg, rgba(0, 245, 255, .14), rgba(178, 75, 243, .14));
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: .5px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(0, 245, 255, .18), inset 0 0 20px rgba(0, 245, 255, .15);
+  cursor: pointer;
+  will-change: transform;
+  transition: box-shadow .2s ease, border-color .2s ease, opacity .2s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 999px;
+    border: 1px dashed rgba(178, 75, 243, .45);
+    animation: orbit-spin 6s linear infinite;
+    pointer-events: none;
+  }
+
+  &:hover {
+    box-shadow: 0 10px 38px rgba(0, 245, 255, .26), inset 0 0 26px rgba(0, 245, 255, .22);
+    transform: translateZ(0) scale(1.04);
+    border-color: #00F5FF;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #FF0080;
+    outline-offset: 3px;
+  }
+
+  &.left {
+    right: auto;
+    left: 22px;
+  }
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-orbit-btn {
+    top: auto;
+    bottom: 24px;
+    transform: none !important;
+
+    &::after {
+      animation: none;
+    }
+  }
+}
+
+.cv-orbit-btn {
+  border-color: rgba(0, 200, 255, 0.7);
+  background:
+    radial-gradient(120% 120% at 30% 30%, rgba(255, 255, 255, .15), rgba(255, 255, 255, .05) 60%, transparent 61%),
+    linear-gradient(135deg, rgba(0, 200, 255, .18), rgba(178, 75, 243, .18));
+  color: #000;
+}
+
+body.dark .cv-orbit-btn {
+  border-color: rgba(0, 245, 255, .7);
+  background:
+    radial-gradient(120% 120% at 30% 30%, rgba(255, 255, 255, .12), rgba(255, 255, 255, .04) 60%, transparent 61%),
+    linear-gradient(135deg, rgba(0, 245, 255, .14), rgba(178, 75, 243, .14));
+  color: #fff;
+}
+
+.cv-orbit-btn {
+  transition:
+    box-shadow .2s ease,
+    border-color .25s ease,
+    color .25s ease,
+    background .25s ease;
+}
+
+body[data-theme="light"] .cv-orbit-btn {
+  border-color: rgba(0, 200, 255, 0.70);
+  color: #000;
+  background:
+    radial-gradient(120% 120% at 30% 30%, rgba(255, 255, 255, .15), rgba(255, 255, 255, .05) 60%, transparent 61%),
+    linear-gradient(135deg, rgba(0, 200, 255, .18), rgba(178, 75, 243, .18));
+}
+
+body[data-theme="dark"] .cv-orbit-btn {
+  border-color: rgba(0, 245, 255, .70);
+  color: #fff;
+  background:
+    radial-gradient(120% 120% at 30% 30%, rgba(255, 255, 255, .12), rgba(255, 255, 255, .04) 60%, transparent 61%),
+    linear-gradient(135deg, rgba(0, 245, 255, .14), rgba(178, 75, 243, .14));
+}
+
+body[data-theme="light"] .cv-orbit-btn:hover {
+  border-color: #00C8FF;
+  box-shadow: 0 10px 38px rgba(0, 200, 255, .23), inset 0 0 26px rgba(0, 200, 255, .18);
+}
+
+body[data-theme="dark"] .cv-orbit-btn:hover {
+  border-color: #00F5FF;
+  box-shadow: 0 10px 38px rgba(0, 245, 255, .26), inset 0 0 26px rgba(0, 245, 255, .22);
+}
