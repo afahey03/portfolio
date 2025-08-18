@@ -1,0 +1,23 @@
+# Allow Google
+User-agent: Googlebot
+Disallow:
+
+# Allow Bing and Edge
+User-agent: Bingbot
+Disallow:
+
+# Allow DuckDuckGo
+User-agent: DuckDuckBot
+Disallow:
+
+# Allow Yahoo
+User-agent: Slurp
+Disallow:
+
+# Allow Apple
+User-agent: Applebot
+Disallow:
+
+# Block everyone else
+User-agent: *
+Disallow: /
