@@ -320,7 +320,10 @@ function createShootingStar(fromClick: boolean = false): void {
   tailContainer.style.right = '6px';
   tailContainer.style.top = '50%';
   tailContainer.style.transform = 'translateY(-50%)';
-  tailContainer.style.width = '240px';
+
+  const isMobile = window.innerWidth <= 768;
+  tailContainer.style.width = isMobile ? '100px' : '240px';
+
   tailContainer.style.height = '30px';
   tailContainer.style.transformOrigin = 'right center';
   tailContainer.style.zIndex = '1';
