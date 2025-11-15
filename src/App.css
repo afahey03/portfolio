@@ -120,7 +120,7 @@ nav.scrolled {
 }
 
 .nav-links a {
-    color: #ffffff;
+    color: #ffe6f0;
     text-decoration: none;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -494,6 +494,46 @@ section {
     border-radius: 12px;
     font-size: 0.8rem;
     border: 1px solid rgba(6, 182, 212, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: colorCycle 3s linear infinite;
+    animation-play-state: paused;
+}
+
+.tech-tag:hover {
+    animation-play-state: running;
+}
+
+@keyframes colorCycle {
+    0% {
+        background: rgba(139, 92, 246, 0.2);
+        border-color: rgba(139, 92, 246, 0.4);
+        color: #b794f6;
+    }
+
+    25% {
+        background: rgba(236, 72, 153, 0.2);
+        border-color: rgba(236, 72, 153, 0.4);
+        color: #f9a8d4;
+    }
+
+    50% {
+        background: rgba(6, 182, 212, 0.2);
+        border-color: rgba(6, 182, 212, 0.4);
+        color: #67e8f9;
+    }
+
+    75% {
+        background: rgba(245, 158, 11, 0.2);
+        border-color: rgba(245, 158, 11, 0.4);
+        color: #fbbf24;
+    }
+
+    100% {
+        background: rgba(139, 92, 246, 0.2);
+        border-color: rgba(139, 92, 246, 0.4);
+        color: #b794f6;
+    }
 }
 
 .project-links {
@@ -748,7 +788,7 @@ footer p {
     }
 
     .mobile-nav-links a {
-        color: white;
+        color: #ffe6f0;
         text-decoration: none;
         font-size: 1.2rem;
         transition: color 0.3s ease;
