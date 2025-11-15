@@ -239,8 +239,12 @@ nav.scrolled {
 
 .education {
     font-size: 1.1rem;
-    color: #b0b0b0;
+    background: linear-gradient(135deg, #e0d4f7, #f9c4e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 2rem;
+    font-weight: 500;
 }
 
 .cta-buttons {
