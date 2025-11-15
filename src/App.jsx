@@ -12,14 +12,23 @@ function App() {
     const [scrollProgress, setScrollProgress] = useState(0);
 
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.body.offsetHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            setScrollProgress(scrollPercent);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                    const scrollPercent = (scrollTop / docHeight) * 100;
+                    setScrollProgress(scrollPercent);
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Initial calculation
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -60,7 +69,6 @@ function App() {
 
             <footer>
                 <p>© 2025 Aidan Fahey. All rights reserved.</p>
-                <p>Rochdale, MA</p>
             </footer>
         </div>
     );

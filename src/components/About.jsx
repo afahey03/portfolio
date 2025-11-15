@@ -3,9 +3,10 @@ import React from 'react';
 const About = () => {
     const skills = {
         languages: ['C# / .NET', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Python', 'Java', 'Swift', 'C/C++', 'PowerShell', 'YAML'],
-        libraries: ['React & React Native', 'Redux', 'jQuery', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'MapKit', 'CoreLocation', 'SwiftUI', 'Socket.IO'],
-        frameworks: ['.NET', 'ASP.NET Core', 'ASP.NET MVC', 'Bootstrap', 'Windows Forms', 'FastAPI', 'Express'],
-        databases: ['Git', 'GitHub', 'GitLab', 'Gitea', 'Microsoft SQL', 'MySQL', 'PostgreSQL'],
+        libraries: ['React', 'React Native', 'Redux', 'jQuery', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Socket.IO'],
+        frameworks: ['.NET Core', 'ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Bootstrap', 'Windows Forms', 'FastAPI', 'Express.js'],
+        databases: ['Microsoft SQL', 'MySQL', 'PostgreSQL'],
+        versionControl: ['Git', 'GitHub', 'GitLab', 'Gitea'],
         tools: ['Docker', 'Prisma', 'Entity Framework', 'Node.js', 'Azure DevOps', 'CI/CD', 'Windows Server & IIS'],
         aws: ['Elastic Beanstalk', 'Lambda', 'RDS', 'SQS', 'SES', 'Lightsail', 'AppConfig', 'CloudWatch', 'Secrets Manager']
     };
@@ -45,9 +46,17 @@ const About = () => {
                         </div>
                     </div>
                     <div className="skill-category">
-                        <h3>🧰 Databases & Version Control</h3>
+                        <h3>🧰 Databases</h3>
                         <div className="skill-tags">
                             {skills.databases.map((skill, i) => (
+                                <span key={i} className="skill-tag">{skill}</span>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="skill-category">
+                        <h3>💾 Version Control</h3>
+                        <div className="skill-tags">
+                            {skills.versionControl.map((skill, i) => (
                                 <span key={i} className="skill-tag">{skill}</span>
                             ))}
                         </div>

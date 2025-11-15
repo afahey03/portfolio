@@ -37,7 +37,6 @@ body {
     height: 3px;
     background: linear-gradient(90deg, var(--cosmic-purple), var(--cosmic-pink), var(--cosmic-cyan));
     z-index: 10000;
-    transition: width 0.3s ease;
 }
 
 /* Star Field */
