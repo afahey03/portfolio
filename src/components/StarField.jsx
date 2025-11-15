@@ -77,10 +77,13 @@ const StarField = () => {
 
         const drawStars = () => {
             const scrollY = window.pageYOffset;
+            const isMobile = window.innerWidth <= 768;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw galaxy spiral
-            drawGalaxySpiral();
+            // Draw galaxy spiral (desktop only)
+            if (!isMobile) {
+                drawGalaxySpiral();
+            }
 
             // Draw regular stars with parallax
             stars.forEach(star => {
