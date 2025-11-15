@@ -689,6 +689,11 @@ footer {
 
 footer p {
     margin: 0.5rem 0;
+    background: linear-gradient(135deg, #b794f6, #f9a8d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 500;
 }
 
 /* Animations */
