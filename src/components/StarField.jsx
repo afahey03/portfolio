@@ -114,7 +114,7 @@ const StarField = () => {
         };
 
         resizeCanvas();
-        createStars(150);
+        createStars(150); // Number of stars, change to whatever you want
         drawStars();
 
         window.addEventListener('resize', () => {
