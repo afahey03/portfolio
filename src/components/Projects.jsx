@@ -7,7 +7,7 @@ const Projects = () => {
             type: 'Web Application',
             title: 'Gear Crossroads',
             description: 'A full-stack web application for showing off and browsing setups of various domains. Users can create and share setups with image uploads, descriptions, categories.',
-            tech: ['Vue.js', 'TypeScript', 'Axios', 'Pinia', 'C#', 'ASP.NET Core', 'Tailwind CSS', 'MySQL', 'AWS RDS', 'Vercel', 'Render'],
+            tech: ['Vue.js', 'TypeScript', 'Axios', 'Pinia', 'C#', 'ASP.NET Core', 'Tailwind CSS', 'Node.js', 'MySQL', 'AWS RDS', 'Vercel', 'Render'],
             link: 'https://www.gearcrossroads.com/',
             linkText: '🌐 View Live Site'
         },
@@ -16,7 +16,7 @@ const Projects = () => {
             type: 'Mobile App',
             title: 'Cnectd',
             description: 'A chat application that allows users to create accounts, send friend requests, and send messages in real-time via DM or groupchat. Built with React Native for mobile and a REST API backend using Node.js and Express.',
-            tech: ['React Native', 'Docker', 'Prisma', 'PostgreSQL', 'Express', 'Node.js', 'Socket.IO', 'TypeScript'],
+            tech: ['React Native', 'Docker', 'Prisma', 'PostgreSQL', 'Express.js', 'Node.js', 'Socket.IO', 'TypeScript'],
             link: 'https://github.com/afahey03/cnectd',
             linkText: '🔗 Visit Repository'
         },
@@ -31,10 +31,10 @@ const Projects = () => {
         },
         {
             image: 'assets/images/Catcher.webp',
-            type: 'REST API',
+            type: 'Web Application',
             title: 'WSS Email Catcher',
             description: 'A comprehensive email management API and sleek React UI with endpoints for listing, querying, and deleting email database entries. Features a clean REST architecture with proper HTTP methods.',
-            tech: ['C#', '.NET Core', 'REST API', 'Entity Framework', 'MySQL', 'AWS RDS', 'React', 'JavaScript'],
+            tech: ['C#', '.NET Core', 'REST API', 'Entity Framework', 'MySQL', 'AWS RDS', 'Node.js', 'React', 'JavaScript'],
             link: 'https://websurfingstudios.com/Projects#email-catcher',
             linkText: '🌐 View Project Page'
         },
