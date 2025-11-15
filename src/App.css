@@ -188,6 +188,7 @@ nav.scrolled {
     width: 240px;
     height: 240px;
     margin: 0 auto 2rem;
+    animation: cvFloat 3s ease-in-out infinite;
 }
 
 .avatar-ring {
