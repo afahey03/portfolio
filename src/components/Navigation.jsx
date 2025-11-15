@@ -25,7 +25,9 @@ const Navigation = () => {
     return (
         <nav className={scrolled ? 'scrolled' : ''}>
             <div className="nav-container">
-                <a href="#top" className="logo" onClick={(e) => handleNavClick(e, '#top')}>AF</a>
+                <a href="#top" className="logo" onClick={(e) => handleNavClick(e, '#top')}>
+                    <img src="/assets/images/Freeza.webp" alt="AF" className="logo-img" />
+                </a>
                 <ul className="nav-links">
                     <li><a href="#about" onClick={(e) => handleNavClick(e, '#about')}>About</a></li>
                     <li><a href="#work" onClick={(e) => handleNavClick(e, '#work')}>Work</a></li>
