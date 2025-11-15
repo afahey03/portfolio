@@ -58,10 +58,6 @@ const Hero = () => {
                     <span className="typing-text">{currentText}</span>
                     <span className="cursor-blink">|</span>
                 </p>
-                <p className="education">
-                    B.A. Computer Science & Religious Studies<br />
-                    College of the Holy Cross
-                </p>
                 <div className="cta-buttons">
                     <a href="#projects" className="btn btn-primary" onClick={(e) => handleScroll(e, '#projects')}>View Projects</a>
                     <a href="#contact" className="btn btn-outline" onClick={(e) => handleScroll(e, '#contact')}>Get In Touch</a>
