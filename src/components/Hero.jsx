@@ -14,6 +14,14 @@ const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
 
+    const handleScroll = (e, targetId) => {
+        e.preventDefault();
+        const target = document.querySelector(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
         const text = typingTexts[currentIndex];
         const timeout = setTimeout(() => {
@@ -55,8 +63,8 @@ const Hero = () => {
                     College of the Holy Cross
                 </p>
                 <div className="cta-buttons">
-                    <a href="#projects" className="btn btn-primary">View Projects</a>
-                    <a href="#contact" className="btn btn-outline">Get In Touch</a>
+                    <a href="#projects" className="btn btn-primary" onClick={(e) => handleScroll(e, '#projects')}>View Projects</a>
+                    <a href="#contact" className="btn btn-outline" onClick={(e) => handleScroll(e, '#contact')}>Get In Touch</a>
                 </div>
             </div>
         </section>

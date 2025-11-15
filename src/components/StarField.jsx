@@ -23,17 +23,23 @@ const StarField = () => {
                     radius: Math.random() * 2,
                     vx: (Math.random() - 0.5) * 0.5,
                     vy: (Math.random() - 0.5) * 0.5,
-                    opacity: Math.random()
+                    opacity: Math.random(),
+                    layer: Math.random() // For parallax
                 });
             }
         };
 
         const drawStars = () => {
+            const scrollY = window.pageYOffset;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            // Draw regular stars with parallax
             stars.forEach(star => {
+                const parallaxOffset = scrollY * star.layer * 0.5;
+                const adjustedY = star.y - parallaxOffset;
+
                 ctx.beginPath();
-                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.arc(star.x, adjustedY % canvas.height, star.radius, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
                 ctx.fill();
 
@@ -56,12 +62,12 @@ const StarField = () => {
         };
 
         resizeCanvas();
-        createStars(200);
+        createStars(150);
         drawStars();
 
         window.addEventListener('resize', () => {
             resizeCanvas();
-            createStars(200);
+            createStars(150);
         });
 
         return () => {
