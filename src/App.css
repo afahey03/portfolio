@@ -744,6 +744,14 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
+    /* Disable section reveal animation on mobile */
+    section.reveal {
+        opacity: 1;
+        transform: translateY(0);
+        transition: none;
+    }
+
     section {
         padding: 4rem 1.5rem;
     }
