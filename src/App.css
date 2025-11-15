@@ -603,9 +603,16 @@ section {
     background: rgba(139, 92, 246, 0.2);
     border: 1px solid rgba(139, 92, 246, 0.3);
     border-radius: 15px;
-    color: white;
     text-decoration: none;
     transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.contact-link span {
+    background: linear-gradient(135deg, #b794f6, #f9a8d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .contact-link:hover {
@@ -614,9 +621,22 @@ section {
     box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
 }
 
+.contact-link:hover span {
+    background: #f9a8d4;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-link:hover .contact-icon {
+    color: #f9a8d4;
+}
+
 .contact-icon {
     width: 24px;
     height: 24px;
+    color: #b794f6;
+    transition: color 0.3s ease;
 }
 
 /* CV Orbit Button */
