@@ -4,7 +4,7 @@ const About = () => {
     const skills = {
         languages: ['C# / .NET', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Python', 'Java', 'Swift', 'C/C++', 'PowerShell', 'YAML'],
         libraries: ['React', 'React Native', 'Redux', 'jQuery', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Socket.IO'],
-        frameworks: ['.NET Core', 'ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Bootstrap', 'Windows Forms', 'FastAPI', 'Express.js'],
+        frameworks: ['.NET Core', 'ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Bootstrap', 'Expo', 'Windows Forms', 'FastAPI', 'Express.js'],
         databases: ['Microsoft SQL', 'MySQL', 'PostgreSQL'],
         versionControl: ['Git', 'GitHub', 'GitLab', 'Gitea'],
         devops: ['GitHub Workflows', 'Docker', 'Prisma', 'Azure DevOps', 'CI/CD'],

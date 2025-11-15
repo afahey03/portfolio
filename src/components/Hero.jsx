@@ -48,7 +48,7 @@ const Hero = () => {
                 <div className="hero-avatar">
                     <div className="avatar-ring"></div>
                     <img
-                        src="assets/images/HolyCross.webp"
+                        src="assets/images/Freeza.webp"
                         alt="Aidan Fahey"
                         className="avatar-image"
                     />
