@@ -42,7 +42,7 @@ function App() {
             </main>
 
             <a
-                href="assets/docs/AidanFaheyResume2025.pdf"
+                href="/assets/docs/AidanFaheyResume2025.pdf"
                 className="cv-orbit-btn"
                 download
                 aria-label="Download résumé"
