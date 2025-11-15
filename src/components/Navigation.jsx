@@ -13,15 +13,24 @@ const Navigation = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const handleNavClick = (e, targetId) => {
+        e.preventDefault();
+        const element = document.querySelector(targetId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        setMobileMenuOpen(false);
+    };
+
     return (
         <nav className={scrolled ? 'scrolled' : ''}>
             <div className="nav-container">
-                <a href="#top" className="logo">AF</a>
+                <a href="#top" className="logo" onClick={(e) => handleNavClick(e, '#top')}>AF</a>
                 <ul className="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about" onClick={(e) => handleNavClick(e, '#about')}>About</a></li>
+                    <li><a href="#work" onClick={(e) => handleNavClick(e, '#work')}>Work</a></li>
+                    <li><a href="#projects" onClick={(e) => handleNavClick(e, '#projects')}>Projects</a></li>
+                    <li><a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a></li>
                 </ul>
                 <button
                     className={`mobile-menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
@@ -35,10 +44,10 @@ const Navigation = () => {
             </div>
             <div className={`mobile-nav ${mobileMenuOpen ? 'active' : ''}`}>
                 <ul className="mobile-nav-links">
-                    <li><a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a></li>
-                    <li><a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a></li>
-                    <li><a href="#projects" onClick={() => setMobileMenuOpen(false)}>Projects</a></li>
-                    <li><a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
+                    <li><a href="#about" onClick={(e) => handleNavClick(e, '#about')}>About</a></li>
+                    <li><a href="#work" onClick={(e) => handleNavClick(e, '#work')}>Work</a></li>
+                    <li><a href="#projects" onClick={(e) => handleNavClick(e, '#projects')}>Projects</a></li>
+                    <li><a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>Contact</a></li>
                 </ul>
             </div>
         </nav>
