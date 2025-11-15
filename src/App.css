@@ -581,7 +581,11 @@ section {
 .contact-text {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #d0d0d0;
+    background: linear-gradient(135deg, #b794f6, #f9a8d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 500;
 }
 
 .contact-links {
