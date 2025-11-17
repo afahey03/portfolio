@@ -3,13 +3,13 @@ import React from 'react';
 const Skills = () => {
     const skills = {
         languages: ['C# / .NET', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Python', 'Java', 'Swift', 'C/C++', 'PowerShell', 'YAML'],
-        libraries: ['React', 'React Native', 'Redux', 'jQuery', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Socket.IO'],
-        frameworks: ['.NET Core', 'ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Bootstrap', 'Expo', 'Windows Forms', 'FastAPI', 'Express.js'],
-        databases: ['Microsoft SQL', 'MySQL', 'PostgreSQL'],
+        frameworks: ['ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Tailwind CSS', 'Express.js', 'Expo', 'Windows Forms', 'Bootstrap', 'FastAPI'],
+        libraries: ['React.js', 'React Native', 'Redux', 'jQuery', 'Pinia', 'Axios', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Socket.IO'],
         versionControl: ['Git', 'GitHub', 'GitLab', 'Gitea'],
+        databases: ['Microsoft SQL', 'MySQL', 'PostgreSQL'],
         devops: ['GitHub Workflows', 'Docker', 'Prisma', 'Azure DevOps', 'CI/CD'],
         misc: ['Entity Framework', 'Node.js', 'Windows Installers', 'Windows Server & IIS'],
-        aws: ['Elastic Beanstalk', 'Lambda', 'RDS', 'SQS', 'SES', 'Lightsail', 'AppConfig', 'CloudWatch', 'Secrets Manager']
+        aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch']
     };
 
     return (
@@ -26,14 +26,6 @@ const Skills = () => {
                         </div>
                     </div>
                     <div className="skill-category">
-                        <h3>📚 Libraries</h3>
-                        <div className="skill-tags">
-                            {skills.libraries.map((skill, i) => (
-                                <span key={i} className="skill-tag">{skill}</span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="skill-category">
                         <h3>🎬 Frameworks</h3>
                         <div className="skill-tags">
                             {skills.frameworks.map((skill, i) => (
@@ -42,9 +34,9 @@ const Skills = () => {
                         </div>
                     </div>
                     <div className="skill-category">
-                        <h3>🧰 Databases</h3>
+                        <h3>📚 Libraries</h3>
                         <div className="skill-tags">
-                            {skills.databases.map((skill, i) => (
+                            {skills.libraries.map((skill, i) => (
                                 <span key={i} className="skill-tag">{skill}</span>
                             ))}
                         </div>
@@ -53,6 +45,14 @@ const Skills = () => {
                         <h3>💾 Version Control</h3>
                         <div className="skill-tags">
                             {skills.versionControl.map((skill, i) => (
+                                <span key={i} className="skill-tag">{skill}</span>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="skill-category">
+                        <h3>🧰 Databases</h3>
+                        <div className="skill-tags">
+                            {skills.databases.map((skill, i) => (
                                 <span key={i} className="skill-tag">{skill}</span>
                             ))}
                         </div>
