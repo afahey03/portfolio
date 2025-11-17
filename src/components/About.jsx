@@ -6,7 +6,12 @@ const About = () => {
             degree: 'B.A. Computer Science & Religious Studies',
             institution: 'College of the Holy Cross',
             years: '2021 - 2025'
-        }
+        }/*,
+        {
+            degree: 'M.A. Theology',
+            institution: 'Holy Apostles College and Seminary',
+            years: '2026 - Present'
+        }*/
     ];
 
     return (
