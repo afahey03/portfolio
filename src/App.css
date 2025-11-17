@@ -346,6 +346,53 @@ section {
     color: #e0e0e0;
 }
 
+/* Education Section */
+.education-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.education-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #b794f6, #f9a8d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.education-item {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--cosmic-purple);
+}
+
+.education-item:last-child {
+    margin-bottom: 0;
+}
+
+.education-degree {
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #b794f6, #f9a8d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.education-institution {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    margin-bottom: 0.25rem;
+}
+
+.education-years {
+    font-size: 1rem;
+    color: #a0a0a0;
+}
+
 .skills-container {
     display: grid;
     gap: 2rem;
