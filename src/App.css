@@ -606,6 +606,8 @@ section {
 
 .project-links {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
 }
 
@@ -619,6 +621,24 @@ section {
 .project-link:hover {
     color: var(--cosmic-pink);
     text-shadow: 0 0 10px var(--cosmic-pink);
+}
+
+.project-linkedin-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cosmic-purple);
+    transition: all 0.3s ease;
+}
+
+.project-linkedin-link:hover {
+    color: var(--cosmic-pink);
+    transform: translateY(-2px);
+}
+
+.linkedin-icon {
+    width: 24px;
+    height: 24px;
 }
 
 /* Contact Section */
