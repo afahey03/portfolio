@@ -8,9 +8,9 @@ const Projects = () => {
             title: 'Gear Crossroads',
             description: 'A full-stack web application for showing off and browsing setups of various domains. Users can create and share setups with image uploads, descriptions, categories.',
             tech: ['Vue.js', 'TypeScript', 'Axios', 'Pinia', 'C#', 'ASP.NET Core', 'Tailwind CSS', 'Node.js', 'MySQL', 'AWS RDS', 'Vercel', 'Render'],
-            link: 'https://www.gearcrossroads.com/',
+            link: 'https://gearcrossroads.com/',
             linkText: '🌐 View Live Site',
-            companyLinkedIn: 'https://www.linkedin.com/company/gear-crossroads'
+            companyLinkedIn: 'https://linkedin.com/company/gear-crossroads'
         },
         {
             image: 'assets/images/Cnectd.webp',
