@@ -37,7 +37,7 @@ const Projects = () => {
             description: 'A comprehensive email management API and sleek React UI with endpoints for listing, querying, and deleting email database entries. Features a clean REST architecture with proper HTTP methods.',
             tech: ['C#', '.NET Core', 'REST API', 'Entity Framework', 'MySQL', 'AWS RDS', 'Node.js', 'React', 'JavaScript'],
             link: 'https://websurfingstudios.com/Projects#email-catcher',
-            linkText: '🌐 View Project Page'
+            linkText: '📃 View Project Page'
         },
         {
             image: 'assets/images/Sender.webp',
@@ -46,7 +46,7 @@ const Projects = () => {
             description: 'Centralized email communication API and AWS Lambda with templating support. Handles automated email sending with customizable templates for various email types.',
             tech: ['C#', '.NET Core', 'REST API', 'AWS SQS', 'AWS Lambda', 'AWS RDS', 'MySQL', 'Entity Framework'],
             link: 'https://websurfingstudios.com/Projects#email-service',
-            linkText: '🌐 View Project Page'
+            linkText: '📃 View Project Page'
         },
         {
             image: 'assets/images/PMA.webp',
@@ -100,7 +100,7 @@ const Projects = () => {
             description: 'AI powered Help Bot using Node.js, C# / .NET, and AWS Lambda during a company-wide hackathon to allow users to run to ask commonly asked questions.',
             tech: ['C#', '.NET Core', 'AWS Lambda', 'Node.js'],
             link: 'https://websurfingstudios.com/Projects#help-bot',
-            linkText: '🌐 View Project Page'
+            linkText: '📃 View Project Page'
         },
         {
             image: 'assets/images/Cache.webp',
