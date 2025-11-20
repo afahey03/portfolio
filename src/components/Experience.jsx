@@ -3,16 +3,16 @@ import React from 'react';
 const Experience = () => {
     const experiences = [
         {
-            title: 'Junior Software Engineer',
+            title: 'Junior Software Engineer & Onboarding Lead',
             company: 'Web Surfing Studios',
             date: 'May 2025 - Present • Remote',
-            description: 'Full-stack software engineering focused on building scalable web applications and REST APIs using C# / .NET, React, AWS, and MySQL. Responsible for constructing and maintaining CI/CD pipelines with Azure DevOps and Git version control, ensuring smooth deployments across development, staging, and production environments. Recently built an enterprise level email system deployed across the suite of Web Surfing Studios internal and external web applications.'
+            description: 'Full-stack software engineering focused on building scalable web applications and REST APIs using C# / .NET, React, AWS, and MySQL. Responsible for constructing and maintaining CI/CD pipelines with Azure DevOps and Git version control, ensuring smooth deployments across development, staging, and production environments. Reviewed pull requests, managed learning modules and provided support to new engineers. Recently built an enterprise level email system deployed across the suite of Web Surfing Studios internal and external web applications.'
         },
         {
             title: 'Point of Sale Software Technician',
             company: 'Aubuchon Company',
             date: 'June 2025 - Present • Westminster, MA',
-            description: 'Provide technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues, perform system updates, and ensure seamless operation of POS terminals to enhance customer experience and operational efficiency. Automate data transfer via PowerShell scripts to streamline reporting and customer management processes. Create and perform automated testing for software releases and expected behavior with Python scripting.'
+            description: 'Provide technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals to enhance operational efficiency. Automate data transfer via PowerShell scripts to streamline reporting and customer management processes. Create and perform automated testing for software releases and expected behavior with Python scripting. Recently built a full-stack inventory management tool using C# / .NET, React, and PostgreSQL.'
         }
     ];
 
