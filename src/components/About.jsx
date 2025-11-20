@@ -3,12 +3,12 @@ import React from 'react';
 const About = () => {
     const education = [
         {
-            degree: 'B.A. Computer Science & Religious Studies',
+            degree: 'Bachelor of Arts - BA, Computer Science & Religious Studies',
             institution: 'College of the Holy Cross',
             years: '2021 - 2025'
         }/*,
         {
-            degree: 'M.A. Theology',
+            degree: 'Master of Arts - MA, Theology',
             institution: 'Holy Apostles College and Seminary',
             years: '2026 - Present'
         }*/
