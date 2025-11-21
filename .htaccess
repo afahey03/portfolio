@@ -1,0 +1,15 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# --- Block specific unwanted bots ---
+RewriteCond %{HTTP_USER_AGENT} Baiduspider [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} Yandex [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} GPTBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} AhrefsBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} SemrushBot [NC]
+RewriteRule .* - [F,L]
+
+# --- Default: Block all bots except trusted ones ---
+RewriteCond %{HTTP_USER_AGENT} !(Googlebot|Bingbot|DuckDuckBot|Slurp|Applebot) [NC]
+RewriteCond %{HTTP_USER_AGENT} bot [NC]
+RewriteRule .* - [F,L]
