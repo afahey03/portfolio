@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Aidan Fahey's Cosmic Portfolio",
     "type": "module",
+    "homepage": "https://afahey03.com",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
