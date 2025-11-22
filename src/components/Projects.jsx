@@ -35,7 +35,7 @@ const Projects = () => {
             type: 'Web Application',
             title: 'WSS Email Catcher',
             description: 'A comprehensive email management API and sleek React UI with endpoints for listing, querying, and deleting email database entries. Features a clean REST architecture with proper HTTP methods.',
-            tech: ['C#', '.NET Core', 'REST API', 'Entity Framework', 'MySQL', 'AWS RDS', 'Node.js', 'React', 'JavaScript'],
+            tech: ['C#', 'ASP.NET Core', 'REST API', 'Entity Framework', 'MySQL', 'AWS RDS', 'Node.js', 'React', 'JavaScript'],
             link: 'https://websurfingstudios.com/Projects#email-catcher',
             linkText: '📃 View Project Page'
         },
@@ -44,7 +44,7 @@ const Projects = () => {
             type: 'REST API',
             title: 'WSS Email Service',
             description: 'Centralized email communication API and AWS Lambda with templating support. Handles automated email sending with customizable templates for various email types.',
-            tech: ['C#', '.NET Core', 'REST API', 'AWS SQS', 'AWS Lambda', 'AWS RDS', 'MySQL', 'Entity Framework'],
+            tech: ['C#', 'ASP.NET Core', 'REST API', 'AWS SQS', 'AWS Lambda', 'AWS RDS', 'MySQL', 'Entity Framework'],
             link: 'https://websurfingstudios.com/Projects#email-service',
             linkText: '📃 View Project Page'
         },
@@ -53,7 +53,7 @@ const Projects = () => {
             type: 'Web Application',
             title: 'PingMyApp',
             description: 'Real-time website monitoring dashboard tracking uptime, response times, and service health. Features instant alerts and comprehensive activity logging.',
-            tech: ['C#', 'ASP.NET MVC', 'AWS', 'Real-Time Monitoring', 'Dashboard UI'],
+            tech: ['C#', 'ASP.NET MVC', 'AWS', 'MySQL', 'Entity Framework', 'Real-Time Monitoring'],
             link: 'https://pingmyapp.com',
             linkText: '🌐 View Live Site'
         },
@@ -62,7 +62,7 @@ const Projects = () => {
             type: 'Web Application',
             title: 'Web Surfing Studios Candidate Portal',
             description: 'Application management portal for Web Surfing Studios recruitment. Features application tracking, status checking, and a streamlined candidate journey visualization.',
-            tech: ['ASP.NET MVC', 'C#', 'Bootstrap', 'AJAX', 'Entity Framework', 'SQL'],
+            tech: ['C#', 'ASP.NET Core', 'React', 'Node.js', 'REST API', 'Bootstrap', 'AJAX', 'Entity Framework', 'MySQL', 'JavaScript'],
             link: 'https://apply.websurfingstudios.com',
             linkText: '🌐 View Live Site'
         },
@@ -98,7 +98,7 @@ const Projects = () => {
             type: 'Help Bot',
             title: 'WSS AI Help Bot',
             description: 'AI powered Help Bot using Node.js, C# / .NET, and AWS Lambda during a company-wide hackathon to allow users to run to ask commonly asked questions.',
-            tech: ['C#', '.NET Core', 'AWS Lambda', 'Node.js'],
+            tech: ['C#', 'ASP.NET Core', 'AWS Lambda', 'Node.js'],
             link: 'https://websurfingstudios.com/Projects#help-bot',
             linkText: '📃 View Project Page'
         },
