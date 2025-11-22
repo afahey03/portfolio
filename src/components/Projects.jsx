@@ -49,6 +49,22 @@ const Projects = () => {
             linkText: '📃 View Project Page'
         },
         {
+            image: 'assets/images/WSSApply.webp',
+            type: 'Web Application',
+            title: 'Web Surfing Studios Candidate Portal',
+            description: 'Application management portal for Web Surfing Studios recruitment. Features application tracking, status checking, and a streamlined candidate journey visualization.',
+            tech: ['C#', 'ASP.NET Core', 'React', 'Node.js', 'REST API', 'Bootstrap', 'AJAX', 'Entity Framework', 'MySQL', 'JavaScript'],
+            link: 'https://apply.websurfingstudios.com',
+            linkText: '🌐 View Live Site'
+        },
+        {
+            image: 'assets/images/Aub.webp',
+            type: 'Web Application',
+            title: 'Aubuchon Hardware POS Inventory Management System',
+            description: 'Inventory management system for Aubuchon Hardware to track and manage POS systems across all stores.',
+            tech: ['C#', 'ASP.NET Core', 'React', 'Node.js', 'REST API', 'OAuth2', 'Entity Framework', 'PostgreSQL', 'JavaScript']
+        },
+        {
             image: 'assets/images/PMA.webp',
             type: 'Web Application',
             title: 'PingMyApp',
@@ -58,13 +74,13 @@ const Projects = () => {
             linkText: '🌐 View Live Site'
         },
         {
-            image: 'assets/images/WSSApply.webp',
-            type: 'Web Application',
-            title: 'Web Surfing Studios Candidate Portal',
-            description: 'Application management portal for Web Surfing Studios recruitment. Features application tracking, status checking, and a streamlined candidate journey visualization.',
-            tech: ['C#', 'ASP.NET Core', 'React', 'Node.js', 'REST API', 'Bootstrap', 'AJAX', 'Entity Framework', 'MySQL', 'JavaScript'],
-            link: 'https://apply.websurfingstudios.com',
-            linkText: '🌐 View Live Site'
+            image: 'assets/images/Help.webp',
+            type: 'Help Bot',
+            title: 'WSS AI Help Bot',
+            description: 'AI powered Help Bot using Node.js, C# / .NET, and AWS Lambda during a company-wide hackathon to allow users to run to ask commonly asked questions.',
+            tech: ['C#', 'ASP.NET Core', 'AWS Lambda', 'Node.js'],
+            link: 'https://websurfingstudios.com/Projects#help-bot',
+            linkText: '📃 View Project Page'
         },
         {
             image: 'assets/images/Spotify.webp',
@@ -92,15 +108,6 @@ const Projects = () => {
             tech: ['Python', 'PyTorch', 'NumPy', 'FastAPI', 'Quiescence Search', 'Alpha-Beta Pruning'],
             link: 'https://github.com/afahey03/Chess-Bot',
             linkText: '🔗 Visit Repository'
-        },
-        {
-            image: 'assets/images/Help.webp',
-            type: 'Help Bot',
-            title: 'WSS AI Help Bot',
-            description: 'AI powered Help Bot using Node.js, C# / .NET, and AWS Lambda during a company-wide hackathon to allow users to run to ask commonly asked questions.',
-            tech: ['C#', 'ASP.NET Core', 'AWS Lambda', 'Node.js'],
-            link: 'https://websurfingstudios.com/Projects#help-bot',
-            linkText: '📃 View Project Page'
         },
         {
             image: 'assets/images/Cache.webp',
