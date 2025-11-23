@@ -12,7 +12,7 @@ const Experience = () => {
             title: 'Point of Sale Software Technician',
             company: 'Aubuchon Company',
             date: 'June 2025 - Present • Westminster, MA',
-            description: 'Provide technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals to enhance operational efficiency. Automate data transfer via PowerShell scripts to streamline reporting and customer management processes. Create and perform automated testing for software releases and expected behavior with Python scripting. Recently built a full-stack inventory management tool using C# / .NET, React, and PostgreSQL.'
+            description: 'Provide technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals to enhance operational efficiency. Automate data transfer via PowerShell scripts to streamline reporting and customer management processes. Create and perform automated testing for software releases and expected behavior with Python scripting. Recently built a full-stack inventory management tool using C#, ASP.NET Core, React, and PostgreSQL.'
         }
     ];
 
