@@ -6,7 +6,7 @@ const Experience = () => {
             title: 'Full Stack Engineer',
             company: 'SterlingBridge Insurance',
             date: 'December 2025 - Present • Worcester, MA',
-            description: 'Developing and maintaining internal web applications and tools to streamline insurance processes using C# / .NET, React, and SQL Server. Collaborating with cross-functional teams to gather requirements, design solutions, and implement features that enhance operational efficiency.',
+            description: 'Developing and maintaining SterlingBridge\'s health insurance portal and processes using C# / .NET, React, and SQL Server. Collaborating with cross-functional teams to gather requirements, design solutions, and implement features that enhance operational efficiency.',
             logo: 'SterlingBridge.webp'
         },
         {
