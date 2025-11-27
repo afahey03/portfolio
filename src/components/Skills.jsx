@@ -3,11 +3,11 @@ import React from 'react';
 const Skills = () => {
     const skills = {
         languages: ['C# / .NET', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Python', 'Java', 'Swift', 'C/C++', 'PowerShell', 'YAML'],
-        frameworks: ['ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Tailwind CSS', 'Express.js', 'Expo', 'Windows Forms', 'Bootstrap', 'FastAPI'],
-        libraries: ['React.js', 'React Native', 'Redux', 'jQuery', 'Pinia', 'Axios', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Socket.IO'],
+        frameworks: ['ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Tailwind CSS', 'Express.js', 'React Native', 'Expo', 'WinForms', 'Bootstrap'],
+        libraries: ['React', 'Redux', 'jQuery', 'Pinia', 'Axios', 'Socket.IO', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib'],
         versionControl: ['Git', 'GitHub', 'GitLab', 'Gitea'],
         databases: ['Microsoft SQL', 'MySQL', 'PostgreSQL'],
-        devops: ['GitHub Workflows', 'Docker', 'Prisma', 'Azure DevOps', 'CI/CD'],
+        devops: ['CI/CD', 'GitHub Workflows', 'Docker', 'Prisma', 'Azure DevOps'],
         misc: ['Entity Framework', 'Node.js', 'Windows Installers', 'Windows Server & IIS'],
         aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch']
     };

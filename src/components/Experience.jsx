@@ -3,16 +3,25 @@ import React from 'react';
 const Experience = () => {
     const experiences = [
         {
-            title: 'Junior Software Engineer & Onboarding Lead',
+            title: 'Full Stack Engineer',
+            company: 'SterlingBridge Insurance',
+            date: 'December 2025 - Present • Worcester, MA',
+            description: 'Developing and maintaining internal web applications and tools to streamline insurance processes using C# / .NET, React, and SQL Server. Collaborating with cross-functional teams to gather requirements, design solutions, and implement features that enhance operational efficiency.',
+            logo: 'SterlingBridge.webp'
+        },
+        {
+            title: 'Volunteer Software Engineer & Onboarding Lead',
             company: 'Web Surfing Studios',
             date: 'May 2025 - Present • Remote',
-            description: 'Full-stack software engineering focused on building scalable web applications and REST APIs using C# / .NET, React, AWS, and MySQL. Responsible for constructing and maintaining CI/CD pipelines with Azure DevOps and Git version control, ensuring smooth deployments across development, staging, and production environments. Reviewed pull requests, managed learning modules and provided support to new engineers. Recently built an enterprise level email system deployed across the suite of Web Surfing Studios internal and external web applications.'
+            description: 'Full-stack software engineering focused on building scalable web applications and REST APIs using C# / .NET, React, AWS, and MySQL. Responsible for constructing and maintaining CI/CD pipelines with Azure DevOps and Git version control, ensuring smooth deployments across development, staging, and production environments. Reviewed pull requests, managed learning modules and provided support to new engineers. Recently built an enterprise level email system deployed across the suite of Web Surfing Studios internal and external web applications.',
+            logo: 'WSS.webp'
         },
         {
             title: 'Point of Sale Software Technician',
             company: 'Aubuchon Company',
-            date: 'June 2025 - Present • Westminster, MA',
-            description: 'Provide technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals to enhance operational efficiency. Automate data transfer via PowerShell scripts to streamline reporting and customer management processes. Create and perform automated testing for software releases and expected behavior with Python scripting. Recently built a full-stack inventory management tool using C#, ASP.NET Core, React, and PostgreSQL.'
+            date: 'June 2025 - November 2025 • Westminster, MA',
+            description: 'Provided technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals. Automated data transfer via PowerShell scripts to streamline reporting and customer management processes. Created and performed automated testing for software releases and expected behavior with Python scripting. Recently built a full-stack inventory management tool to track and manage all POS systems across Aubuchon Hardware locations using C#, ASP.NET Core, React, and PostreSQL.',
+            logo: 'Aubuchon.webp'
         }
     ];
 
@@ -21,11 +30,42 @@ const Experience = () => {
             <h2 className="section-title">Work Experience</h2>
             {experiences.map((exp, i) => (
                 <div key={i} className="glass-card" style={{ marginBottom: '20px' }}>
-                    <div className="work-card">
-                        <h3 className="work-title">{exp.title}</h3>
-                        <p className="company">{exp.company}</p>
-                        <p className="work-date">{exp.date}</p>
-                        <p className="work-description">{exp.description}</p>
+                    <div className="work-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <div style={{ flex: 1 }}>
+                                <h3 className="work-title" style={{ marginBottom: 0 }}>{exp.title}</h3>
+                                <p className="company" style={{ marginBottom: 0 }}>{exp.company}</p>
+                                <p className="work-date" style={{ marginBottom: 0 }}>{exp.date}</p>
+                            </div>
+                            {exp.logo && (
+                                <div
+                                    className="logo-container"
+                                    style={{
+                                        height: 64,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        background: 'rgba(255,255,255,0.05)',
+                                        borderRadius: 12,
+                                        overflow: 'hidden',
+                                        marginLeft: 16
+                                    }}
+                                >
+                                    <img
+                                        src={`assets/logos/${exp.logo}`}
+                                        alt={exp.company + ' logo'}
+                                        style={{
+                                            height: '64px',
+                                            width: 'auto',
+                                            objectFit: 'contain',
+                                            borderRadius: 8,
+                                            background: 'transparent',
+                                            display: 'block'
+                                        }}
+                                    />
+                                </div>
+                            )}
+                        </div>
+                        <p className="work-description" style={{ marginTop: 12 }}>{exp.description}</p>
                     </div>
                 </div>
             ))}
