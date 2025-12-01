@@ -3,11 +3,11 @@ import React from 'react';
 const Experience = () => {
     const experiences = [
         {
-            title: 'Full Stack Engineer',
-            company: 'SterlingBridge Insurance',
-            date: 'December 2025 - Present • Worcester, MA',
-            description: 'Developing and maintaining SterlingBridge\'s health insurance portal and processes using C# / .NET, Angular, Azure, and SQL Server. Collaborating with cross-functional teams to gather requirements, design solutions, and implement features that enhance operational efficiency.',
-            logo: 'SterlingBridge.webp'
+            title: 'Software Developer',
+            company: 'The Kenerson Group',
+            date: 'December 2025 - Present • Athol, MA',
+            description: 'Geospatial and full-stack development of TreeWorks, an urban tree management system built as an extension to Esri’s ArcGIS®, ArcPad®, and ArcGIS Online platforms.',
+            logo: 'TKG.webp'
         },
         {
             title: 'Volunteer Software Engineer & Onboarding Lead',
