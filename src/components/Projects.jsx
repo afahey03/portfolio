@@ -116,15 +116,6 @@ const Projects = () => {
             tech: ['C++', 'LRU', 'Cache'],
             link: 'https://github.com/afahey03/CSCI226-Computer-Systems-and-Organization',
             linkText: '🔗 Visit Repository'
-        },
-        {
-            image: 'assets/images/Furry.webp',
-            type: 'Web Application',
-            title: 'Furry Friends Lodge',
-            description: 'Full-Stack ASP.NET MVC C# application for pet boarding facility to be able to track & manage pet boarding bookings.',
-            tech: ['C#', 'ASP.NET MVC', 'Microsoft SQL', 'Entity Framework'],
-            link: 'https://github.com/afahey03/Pet-Boarding',
-            linkText: '🔗 Visit Repository'
         }
     ];
 
