@@ -3,7 +3,7 @@ import React from 'react';
 const Experience = () => {
     const experiences = [
         {
-            title: 'Software Developer',
+            title: 'Software Engineer',
             company: 'The Kenerson Group',
             companyUrl: 'https://kenersongroup.com',
             date: 'December 2025 - Present • Athol, MA',
