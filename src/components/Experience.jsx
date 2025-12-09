@@ -15,7 +15,7 @@ const Experience = () => {
             company: 'Web Surfing Studios',
             companyUrl: 'https://www.websurfingstudios.com',
             date: 'May 2025 - Present • Remote',
-            description: 'Full-stack software engineering focused on building scalable web applications and REST APIs using C# / .NET, React, AWS, and MySQL. Responsible for constructing and maintaining CI/CD pipelines with Azure DevOps and Git version control, ensuring smooth deployments across development, staging, and production environments. Reviewed pull requests, managed learning modules and provided support to new engineers. Recently built an enterprise level email system deployed across the suite of Web Surfing Studios internal and external web applications.',
+            description: 'Full-stack software engineering focused on building scalable web applications and REST APIs using C# / .NET, React, AWS, and MySQL. Responsible for constructing and maintaining CI/CD pipelines with Azure DevOps and Git version control, ensuring smooth deployments across development, staging, and production environments. Reviewed pull requests, managed learning modules and provided support to new engineers. Built an enterprise level email system deployed across the suite of Web Surfing Studios internal and external web applications.',
             logo: 'WSS.webp'
         },
         {
@@ -23,7 +23,7 @@ const Experience = () => {
             company: 'Aubuchon Company',
             companyUrl: 'https://www.aubuchon.company',
             date: 'June 2025 - November 2025 • Westminster, MA',
-            description: 'Provided technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals. Automated data transfer via PowerShell scripts to streamline reporting and customer management processes. Created and performed automated testing for software releases and expected behavior with Python scripting. Recently built a full-stack inventory management tool to track and manage all POS systems across Aubuchon Hardware locations using C#, ASP.NET Core, React, and PostreSQL.',
+            description: 'Provided technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals. Automated data transfer via PowerShell scripts to streamline reporting and customer management processes. Created and performed automated testing for software releases and expected behavior with Python scripting. Built a full-stack inventory management tool to track and manage all POS systems across Aubuchon Hardware locations using C#, ASP.NET Core, React, and PostreSQL.',
             logo: 'Aubuchon.webp'
         }
     ];
