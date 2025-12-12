@@ -7,7 +7,7 @@ const Experience = () => {
             company: 'The Kenerson Group',
             companyUrl: 'https://kenersongroup.com',
             date: 'December 2025 - Present • Athol, MA',
-            description: 'Geospatial and full-stack development of TreeWorks, an urban tree management system built as an extension to Esri\'s ArcGIS®, ArcPad®, and ArcGIS Online platforms.',
+            description: 'Geospatial and full-stack development of TreeWorks, an urban tree management system built as an extension to Esri\'s ArcGIS Pro® and ArcGIS Online platforms.',
             logo: 'TKG.webp'
         },
         {
