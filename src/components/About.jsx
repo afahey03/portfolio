@@ -7,13 +7,7 @@ const About = () => {
             institution: 'College of the Holy Cross',
             years: '2021 - 2025',
             logo: 'HCLogo.webp'
-        }/*,
-        {
-            degree: 'Master of Arts - MA, Theology',
-            institution: 'Holy Apostles College and Seminary',
-            years: '2026 - Present',
-            logo: 'HALogo.webp'
-        }*/
+        }
     ];
 
     return (
@@ -21,9 +15,8 @@ const About = () => {
             <h2 className="section-title">About Me</h2>
             <div className="glass-card">
                 <p className="about-text">
-                    Passionate software developer with expertise in building scalable web applications and APIs.
-                    I thrive on solving complex problems and creating innovative solutions that make a real impact in
-                    the digital world.
+                    Software Engineer with expertise in full stack web, mobile, and desktop development.
+                    Passionate about creating efficient and scalable solutions to complex problems.
                 </p>
                 <div className="education-section">
                     <h3 className="education-heading">Education</h3>
