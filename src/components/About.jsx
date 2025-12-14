@@ -5,7 +5,7 @@ const About = () => {
         {
             degree: 'Bachelor of Arts - BA, Computer Science & Religious Studies',
             institution: 'College of the Holy Cross',
-            years: '2021 - 2025',
+            years: 'Sep 2021 - May 2025',
             logo: 'HCLogo.webp'
         }
     ];
