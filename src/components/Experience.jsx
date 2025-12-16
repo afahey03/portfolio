@@ -5,7 +5,7 @@ const Experience = () => {
         {
             title: 'Software Engineer',
             company: 'The Kenerson Group',
-            companyUrl: 'https://kenersongroup.com',
+            companyUrl: 'https://treeworks.io',
             date: 'December 2025 - Present • Athol, MA',
             description: 'Software development in C# / .NET of TreeWorks, an urban tree management system built as an extension to Esri\'s ArcGIS Pro and ArcGIS Online platforms.',
             logo: 'TKG.webp'
