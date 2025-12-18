@@ -9,7 +9,7 @@ const Skills = () => {
         databases: ['Microsoft SQL Server', 'PostgreSQL', 'MySQL', 'SQLite'],
         devops: ['CI/CD', 'GitHub Actions', 'Docker', 'Prisma', 'Azure DevOps'],
         misc: ['Node.js', 'Entity Framework', 'Windows Installers', 'Windows Server & IIS'],
-        aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch', 'API Gateway', 'CloudFormation', 'Route 53', 'IAM', 'CloudFront'],
+        aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch', 'API Gateway']
     };
 
     return (
