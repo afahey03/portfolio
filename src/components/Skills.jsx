@@ -2,14 +2,14 @@ import React from 'react';
 
 const Skills = () => {
     const skills = {
-        languages: ['C# / .NET', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Python', 'Java', 'Swift', 'C/C++', 'PowerShell', 'YAML'],
-        frameworks: ['ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Tailwind CSS', 'Express.js', 'React Native', 'Expo', 'WinForms', 'Bootstrap'],
+        languages: ['C# / .NET', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Python', 'Java', 'Swift', 'C/C++', 'PowerShell', 'YAML', 'SQL'],
+        frameworks: ['ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Tailwind CSS', 'Express.js', 'React Native', 'Expo', 'WPF', 'Bootstrap'],
         libraries: ['React', 'Redux', 'jQuery', 'Pinia', 'Axios', 'Socket.IO', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib'],
         versionControl: ['Git', 'GitHub', 'GitLab', 'Gitea'],
-        databases: ['Microsoft SQL Server', 'MySQL', 'PostgreSQL', 'SQLite'],
-        devops: ['CI/CD', 'GitHub Workflows', 'Docker', 'Prisma', 'Azure DevOps'],
-        misc: ['Entity Framework', 'Node.js', 'Windows Installers', 'Windows Server & IIS'],
-        aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch']
+        databases: ['Microsoft SQL Server', 'PostgreSQL', 'MySQL', 'SQLite'],
+        devops: ['CI/CD', 'GitHub Actions', 'Docker', 'Prisma', 'Azure DevOps'],
+        misc: ['Node.js', 'Entity Framework', 'Windows Installers', 'Windows Server & IIS'],
+        aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch', 'API Gateway', 'CloudFormation', 'Route 53', 'IAM', 'CloudFront'],
     };
 
     return (
