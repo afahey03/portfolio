@@ -4,7 +4,7 @@ const Skills = () => {
     const skills = {
         languages: ['C# / .NET', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Python', 'Java', 'Swift', 'C/C++', 'PowerShell', 'YAML', 'SQL'],
         frameworks: ['ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Tailwind CSS', 'Express.js', 'React Native', 'Expo', 'WPF', 'Bootstrap'],
-        libraries: ['React', 'Redux', 'jQuery', 'Pinia', 'Axios', 'Socket.IO', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib'],
+        libraries: ['React', 'Redux', 'Axios', 'jQuery', 'Pinia', 'Socket.IO', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib'],
         versionControl: ['Git', 'GitHub', 'GitLab', 'Gitea'],
         databases: ['Microsoft SQL Server', 'PostgreSQL', 'MySQL', 'SQLite'],
         devops: ['CI/CD', 'GitHub Actions', 'Docker', 'Prisma', 'Azure DevOps'],
