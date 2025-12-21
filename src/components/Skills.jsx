@@ -7,9 +7,9 @@ const Skills = () => {
         libraries: ['React', 'Redux', 'Axios', 'jQuery', 'Pinia', 'Socket.IO', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib'],
         versionControl: ['Git', 'GitHub', 'GitLab', 'Gitea'],
         databases: ['Microsoft SQL Server', 'PostgreSQL', 'MySQL', 'SQLite'],
-        devops: ['CI/CD', 'GitHub Actions', 'Docker', 'Prisma', 'Azure DevOps'],
-        misc: ['Node.js', 'Entity Framework', 'Windows Installers', 'Windows Server & IIS'],
-        aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch', 'API Gateway']
+        devops: ['CI/CD', 'GitHub Actions', 'Docker', 'Azure DevOps', 'Windows Server & IIS'],
+        misc: ['Node.js', 'Entity Framework', 'Prisma', 'Windows Installers'],
+        aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch', 'IAM']
     };
 
     return (
