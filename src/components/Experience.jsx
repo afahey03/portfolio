@@ -7,7 +7,7 @@ const Experience = () => {
             company: 'The Kenerson Group',
             companyUrl: 'https://treeworks.io',
             date: 'December 2025 - Present • Athol, MA',
-            description: 'Full stack and geospatial software engineering in C# / .NET, React, and Microsoft SQL Server. Developed TreeWorks, an urban tree management system built as an extension to Esri\'s ArcGIS Pro and ArcGIS Online platforms.',
+            description: 'Full stack and geospatial software engineering in C# / .NET, React, and Microsoft SQL Server. Engineered TreeWorks, an urban tree management system built as an extension to Esri\'s ArcGIS Pro and ArcGIS Online platforms. Developed Cimplar, Bay State Forestry\'s client property plotting and reporting tool.',
             logo: 'TKG.webp'
         },
         {
