@@ -107,15 +107,6 @@ const Projects = () => {
             tech: ['Python', 'PyTorch', 'NumPy', 'FastAPI', 'Quiescence Search', 'Alpha-Beta Pruning'],
             link: 'https://github.com/afahey03/Chess-Bot',
             linkText: '🔗 Visit Repository'
-        },
-        {
-            image: 'assets/images/Cache.webp',
-            type: 'Cache',
-            title: 'C++ Cache Simulator',
-            description: 'A C++ program that simulates a CPU cache. Supports different cache sizes, block sizes, and associativity levels. Implements LRU cache eviction policy.',
-            tech: ['C++', 'LRU', 'Cache'],
-            link: 'https://github.com/afahey03/CSCI226-Computer-Systems-and-Organization',
-            linkText: '🔗 Visit Repository'
         }
     ];
 

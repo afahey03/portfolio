@@ -7,7 +7,7 @@ const Experience = () => {
             company: 'The Kenerson Group',
             companyUrl: 'https://treeworks.io',
             date: 'December 2025 - Present • Athol, MA',
-            description: 'Full stack and geospatial software engineering in C# / .NET, React, and Microsoft SQL Server. Engineered TreeWorks, an urban tree management system built as an extension to Esri\'s ArcGIS Pro and ArcGIS Online platforms. Developed Cimplar, Bay State Forestry\'s client property plotting and reporting tool.',
+            description: 'Full stack and geospatial software engineering in C# / .NET, React, and SQL Server. Engineered TreeWorks, an urban tree management system built as an extension to Esri\'s ArcGIS Pro and ArcGIS Online platforms. Developed Cimplar, Bay State Forestry\'s client property plotting and reporting tool.',
             logo: 'TKG.webp'
         },
         {
@@ -23,7 +23,7 @@ const Experience = () => {
             company: 'Aubuchon Company',
             companyUrl: 'https://aubuchon.company',
             date: 'June 2025 - November 2025 • Westminster, MA',
-            description: 'Provided technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals. Automated data transfer via PowerShell scripts to streamline reporting and customer management processes. Created and performed automated testing for software releases and expected behavior with Python scripting. Built a full-stack inventory management tool to track and manage all POS systems across Aubuchon Hardware locations using C#, ASP.NET Core, React, and PostreSQL.',
+            description: 'Full-stack software engineering in C#, ASP.NET Core, React, and PostgreSQL. Provided technical support and maintenance for point of sale systems across multiple retail locations. Troubleshoot hardware and software issues and ensure seamless operation of POS terminals. Automated data transfer via PowerShell scripts to streamline reporting and customer management processes. Created and performed automated testing for software releases and expected behavior with Python scripting. Built a full-stack inventory management tool to track and manage all POS systems across Aubuchon Hardware locations.',
             logo: 'Aubuchon.webp'
         }
     ];
