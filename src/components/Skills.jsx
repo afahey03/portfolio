@@ -6,7 +6,7 @@ const Skills = () => {
         frameworks: ['ASP.NET Core', 'ASP.NET MVC', 'Vue.js', 'Tailwind CSS', 'Express.js', 'React Native', 'Expo', 'WPF', 'Bootstrap'],
         libraries: ['React', 'Redux', 'Axios', 'jQuery', 'Pinia', 'Socket.IO', 'PyTorch', 'NumPy', 'Pandas', 'Scikit-learn', 'Matplotlib'],
         versionControl: ['Git', 'GitHub', 'GitLab', 'Gitea'],
-        databases: ['SQL Server', 'PostgreSQL', 'MySQL', 'SQLite'],
+        databases: ['Microsoft SQL Server', 'PostgreSQL', 'MySQL', 'SQLite'],
         devops: ['CI/CD', 'GitHub Actions', 'Docker', 'Azure DevOps', 'Windows Server & IIS'],
         misc: ['Node.js', 'Entity Framework', 'Prisma', 'Windows Installers'],
         aws: ['Elastic Beanstalk', 'Lightsail', 'AppConfig', 'Secrets Manager', 'SQS', 'SES', 'RDS', 'Lambda', 'S3', 'CloudWatch', 'IAM']
