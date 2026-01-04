@@ -93,7 +93,7 @@ function App() {
             </button>
 
             <footer>
-                <p>© 2025 Aidan Fahey. All rights reserved.</p>
+                <p>© 2026 Aidan Fahey. All rights reserved.</p>
             </footer>
         </div>
     );
