@@ -15,7 +15,7 @@ const About = () => {
             <h2 className="section-title">About Me</h2>
             <div className="glass-card">
                 <p className="about-text">
-                    Software Engineer with expertise in full stack web, mobile, and desktop development.
+                    Software Engineer with expertise in full-stack web, mobile, and desktop development.
                     Passionate about creating efficient and scalable solutions to complex problems.
                 </p>
                 <div className="education-section">
